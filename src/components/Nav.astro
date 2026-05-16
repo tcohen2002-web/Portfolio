@@ -71,6 +71,8 @@ const links = [
 <style>
   .letter { transition: color 280ms ease; }
   .letter:hover { color: var(--c); }
+  [data-hero-stack][data-shrunk] .letter { pointer-events: none; }
+  [data-hero-stack][data-shrunk] .letter:hover { color: inherit; }
 </style>
 
 <script>
@@ -118,6 +120,12 @@ const links = [
 
       const top = startTopPx + shrinkP * (endTopPx - startTopPx);
       root.style.setProperty('--hero-top', `${top}px`);
+
+      if (shrinkP > 0.5) {
+        heroStack.setAttribute('data-shrunk', '');
+      } else {
+        heroStack.removeAttribute('data-shrunk');
+      }
 
       const morphP = smooth(clamp((p - 0.55) / 0.45, 0, 1));
       const talWidth = talEl.getBoundingClientRect().width;
