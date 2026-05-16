@@ -117,12 +117,15 @@ const links = [
       targetPx = isMobile ? 15 : 28;
       startTopPx = isMobile ? vh * 0.10 : 20;
       endTopPx = isMobile ? 22 : 20;
-      const prevTransform = cohenEl.style.transform;
+      const prevCohenT = cohenEl.style.transform;
+      const prevStackT = heroStack.style.transform;
       cohenEl.style.transform = 'none';
+      heroStack.style.transform = 'none';
       root.style.setProperty('--hero-font-size', `${startPx}px`);
       const w = talEl.getBoundingClientRect().width;
       if (w > 0) talRatio = w / startPx;
-      cohenEl.style.transform = prevTransform;
+      cohenEl.style.transform = prevCohenT;
+      heroStack.style.transform = prevStackT;
     };
 
     const update = () => {
@@ -226,6 +229,14 @@ const links = [
       state = 'big';
     }
     update();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        if (signal.aborted) return;
+        measure();
+        update();
+      });
+    }
   }
 
   document.addEventListener('astro:page-load', initHero);
