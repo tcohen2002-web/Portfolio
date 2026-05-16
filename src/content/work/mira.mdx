@@ -1,0 +1,622 @@
+---
+n: "02"
+title: "Mira"
+tagline: "An interactive plant — a gentle emotional mirror for young adults and parents living apart."
+description: "Mira is an interactive desktop plant — a quiet emotional channel between university students and the parents they've left behind. Built in two phases inside Design Computing at the University of Sydney: a team-of-three concept, then a solo refinement informed by user testing."
+year: "2025"
+duration: "13 weeks"
+role: "UX/UI design, research, prototyping · team of three (Part 1); solo refinement (Part 2)"
+tools: ["Figma", "Physical prototyping"]
+outcome: "High Distinction"
+cover: "./_images/mira/cover.png"
+coverAlt: "Mira — a soft green screen showing a simple pixel face, perched in a small terracotta planter."
+accent: "#D2DFC8"
+titleColor: "#2F5E3E"
+figmaUrl: "https://embed.figma.com/proto/vjC79MaZCqBEtVtDTcWYU6/Mira-High-Fi?page-id=0%3A1&node-id=18-351&viewport=-861%2C-3772%2C0.23&scaling=scale-down&content-scaling=fixed&starting-point-node-id=18%3A351&show-proto-sidebar=1&embed-host=share"
+draft: false
+---
+
+import SectionOpener from '../../components/SectionOpener.astro';
+import { Image } from 'astro:assets';
+import sketchMira from '../../../Mira/mira_extras/sketch_mira.png';
+import lowfiScreen1 from '../../../Mira/mira_extras/lowfi-screen4.png';
+import midfi1 from '../../../Mira/mira_extras/mira_midfi.png';
+import physicalPrototypeMidfi from '../../../Mira/mira_extras/physical_midfi_new.png';
+import journeyMap from '../../../Mira/mira_extras/journeymap.png';
+import iter15 from '../../../Mira/mira_extras/15.png';
+import iter16 from '../../../Mira/mira_extras/16.png';
+import iter25 from '../../../Mira/mira_extras/25.png';
+import iter26 from '../../../Mira/mira_extras/26.png';
+import miraUsertesting from '../../../Mira/mira_extras/mira-usertesting.png';
+import miraHighfiScreens from '../../../Mira/mira_extras/mira-hifi-all3.png';
+
+<SectionOpener n="01" eyebrow="The brief" title="Design an interactive experience around care." />
+
+<div class="mira-brief">
+  <dl class="mira-brief__sheet">
+    <div class="mira-brief__row">
+      <dt><span class="mira-brief__dot"></span>Prompt</dt>
+      <dd>Care — emotional, physical, social — mediated by digital technology.</dd>
+    </div>
+    <div class="mira-brief__row">
+      <dt><span class="mira-brief__dot"></span>Medium</dt>
+      <dd>Digital + physical + spatial, integrated. Not one-way; actually interactive.</dd>
+    </div>
+    <div class="mira-brief__row">
+      <dt><span class="mira-brief__dot"></span>Frame</dt>
+      <dd>13 weeks · team of three · USYD Design Computing.</dd>
+    </div>
+  </dl>
+
+  <p class="mira-brief__lede">We narrowed early. Of all the forms care can take, we kept circling the one closest to us — students who had moved cities or countries for university, and the parents they had left behind. Loving, intact, quietly under strain — not from neglect, but from the friction of staying close at a distance.</p>
+
+  <p class="mira-brief__constraint"><em>"Mira had to be <span class="mira-brief__hl">an emotional mirror</span>, not a messaging app."</em> <span class="mira-brief__cite">— Self-imposed constraint</span></p>
+</div>
+
+<SectionOpener n="02" eyebrow="The problem" title="Three forces working against care across distance." />
+
+<div class="mira-problem">
+  <article class="mira-flower" data-tone="sage">
+    <svg class="mira-flower__shape" viewBox="0 0 320 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <g transform="translate(160,170)">
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(60)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(120)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(180)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(240)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(300)" />
+        <circle cx="0" cy="0" r="118" fill="currentColor" />
+        <circle cx="0" cy="0" r="14" fill="rgba(11,11,14,0.08)" />
+      </g>
+    </svg>
+    <div class="mira-flower__inner">
+      <span class="mira-flower__num">i · Cadence</span>
+      <h3 class="mira-flower__title">Calls and texts demand performance.</h3>
+      <p class="mira-flower__body">When every check-in has to be a story, the contact thins — not because the relationship weakened, but because the format keeps raising its own bar.</p>
+    </div>
+  </article>
+
+  <article class="mira-flower" data-tone="amber">
+    <svg class="mira-flower__shape" viewBox="0 0 320 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <g transform="translate(160,170)">
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(60)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(120)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(180)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(240)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(300)" />
+        <circle cx="0" cy="0" r="118" fill="currentColor" />
+        <circle cx="0" cy="0" r="14" fill="rgba(11,11,14,0.08)" />
+      </g>
+    </svg>
+    <div class="mira-flower__inner">
+      <span class="mira-flower__num">ii · Asymmetry</span>
+      <h3 class="mira-flower__title">Parents want updates. Students want space.</h3>
+      <p class="mira-flower__body">Parents reach for the details the student didn't think to share. The student wants room the parent didn't think to grant. Each reads the other slightly wrong.</p>
+    </div>
+  </article>
+
+  <article class="mira-flower" data-tone="clay">
+    <svg class="mira-flower__shape" viewBox="0 0 320 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <g transform="translate(160,170)">
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(60)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(120)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(180)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(240)" />
+        <ellipse cx="0" cy="-115" rx="42" ry="58" fill="currentColor" transform="rotate(300)" />
+        <circle cx="0" cy="0" r="118" fill="currentColor" />
+        <circle cx="0" cy="0" r="14" fill="rgba(11,11,14,0.08)" />
+      </g>
+    </svg>
+    <div class="mira-flower__inner">
+      <span class="mira-flower__num">iii · Compounding silence</span>
+      <h3 class="mira-flower__title">Distance reads quiet as something bigger.</h3>
+      <p class="mira-flower__body">Once a gap opens, both sides hesitate to break it. The longer the pause, the heavier it feels — and the harder it becomes to close.</p>
+    </div>
+  </article>
+</div>
+
+<SectionOpener n="03" eyebrow="Research" title="Four methods. Two sides of the same need." />
+
+<p class="lead">We triangulated to keep one stream from biasing the rest. Each method earned a place because it told us something the others couldn't.</p>
+
+<div class="mira-methods">
+  <article class="mira-method">
+    <span class="mira-method__num">i</span>
+    <h4 class="mira-method__name">Surveys</h4>
+    <span class="mira-method__sub">Scale</span>
+  </article>
+  <article class="mira-method">
+    <span class="mira-method__num">ii</span>
+    <h4 class="mira-method__name">Interviews</h4>
+    <span class="mira-method__sub">Texture</span>
+  </article>
+  <article class="mira-method">
+    <span class="mira-method__num">iii</span>
+    <h4 class="mira-method__name">Online ethnography</h4>
+    <span class="mira-method__sub">Unmoderated voice</span>
+  </article>
+  <article class="mira-method">
+    <span class="mira-method__num">iv</span>
+    <h4 class="mira-method__name">Market analysis</h4>
+    <span class="mira-method__sub">Honest baseline</span>
+  </article>
+</div>
+
+<p class="mira-pivot"><span class="mira-pivot__eyebrow">From four streams</span>Five insights surfaced. They didn't sit on a single spectrum — they belonged to <em>two distinct sides of the same relationship</em>.</p>
+
+<div class="mira-mirror">
+  <article class="mira-mirror__side" data-side="young">
+    <span class="mira-mirror__eyebrow">Young adults</span>
+    <h3 class="mira-mirror__title">Need <em>room</em> — but not <em>absence</em>.</h3>
+    <p>Independence from parental expectation without losing the relationship. Space to express a truer self, away from the fear of judgement. A positive family channel that doesn't ask them to perform to use it.</p>
+  </article>
+  <div class="mira-mirror__hinge" aria-hidden="true">
+    <svg viewBox="0 0 24 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <line x1="12" y1="0" x2="12" y2="110" stroke="#2F5E3E" stroke-width="1.25" opacity="0.42" />
+      <circle cx="12" cy="130" r="11" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.25" />
+      <circle cx="12" cy="130" r="3.5" fill="#2F5E3E" />
+      <line x1="12" y1="150" x2="12" y2="260" stroke="#2F5E3E" stroke-width="1.25" opacity="0.42" />
+    </svg>
+  </div>
+  <article class="mira-mirror__side" data-side="parent">
+    <span class="mira-mirror__eyebrow">Parents</span>
+    <h3 class="mira-mirror__title">Want to <em>guide</em> — and have to <em>let go</em>.</h3>
+    <p>To keep guiding so their child doesn't repeat the same mistakes. To hold open communication while quietly stepping back, and to hold the worry that comes with stepping back.</p>
+  </article>
+</div>
+
+<div class="mira-synthesis">
+  <span class="mira-synthesis__eyebrow">The problem to design for</span>
+  <p class="mira-synthesis__line">The young adult needs <em>less contact, more trust</em>. The parent needs <em>more contact, less control</em>.</p>
+  <p class="mira-synthesis__coda">Any product sitting between them had to make room for both — without becoming another thing to maintain.</p>
+</div>
+
+<SectionOpener n="04" eyebrow="Ideation" title="Nine storyboards. Three finalists. One survived feedback." />
+
+<p class="lead">Each of us storyboarded three concepts — nine in total. We picked our most exciting on interest and creative potential, leaving three finalists to score against research insights, personas, the journey map, and the brief's digital · physical · processual requirement.</p>
+
+<div class="mira-finalists">
+  <article class="mira-finalist" data-state="bloom">
+    <div class="mira-finalist__art">
+      <svg viewBox="0 0 120 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <line x1="60" y1="220" x2="60" y2="92" stroke="#2F5E3E" stroke-width="2" stroke-linecap="round" />
+        <path d="M 60 158 Q 30 150 26 175 Q 40 172 60 166 Z" fill="#B6CDB1" />
+        <path d="M 60 132 Q 90 124 94 149 Q 80 146 60 140 Z" fill="#B6CDB1" />
+        <g transform="translate(60,62)" fill="#B6CDB1">
+          <ellipse cx="0" cy="-32" rx="15" ry="22" />
+          <ellipse cx="0" cy="-32" rx="15" ry="22" transform="rotate(60)" />
+          <ellipse cx="0" cy="-32" rx="15" ry="22" transform="rotate(120)" />
+          <ellipse cx="0" cy="-32" rx="15" ry="22" transform="rotate(180)" />
+          <ellipse cx="0" cy="-32" rx="15" ry="22" transform="rotate(240)" />
+          <ellipse cx="0" cy="-32" rx="15" ry="22" transform="rotate(300)" />
+          <circle cx="0" cy="0" r="24" />
+          <circle cx="0" cy="0" r="5" fill="rgba(11,11,14,0.15)" />
+        </g>
+      </svg>
+    </div>
+    <div class="mira-finalist__meta">
+      <span class="mira-finalist__score">Score 8 · chosen</span>
+      <h3 class="mira-finalist__name">Family Plant</h3>
+      <p class="mira-finalist__desc">A shared digital–physical plant. The flower visibly reflects the emotional health of the relationship.</p>
+    </div>
+  </article>
+
+  <article class="mira-finalist" data-state="bud">
+    <div class="mira-finalist__art">
+      <svg viewBox="0 0 120 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <line x1="60" y1="220" x2="60" y2="118" stroke="#2F5E3E" stroke-width="2" stroke-linecap="round" />
+        <path d="M 60 170 Q 32 162 28 184 Q 42 181 60 176 Z" fill="#E8C99A" />
+        <path d="M 60 118 Q 38 112 42 80 Q 52 52 60 52 Q 68 52 78 80 Q 82 112 60 118 Z" fill="#E8C99A" />
+        <path d="M 48 102 Q 60 108 72 102" stroke="#2F5E3E" stroke-width="1.2" fill="none" stroke-linecap="round" />
+        <path d="M 50 86 Q 60 92 70 86" stroke="#2F5E3E" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6" />
+      </svg>
+    </div>
+    <div class="mira-finalist__meta">
+      <span class="mira-finalist__score">Score 5</span>
+      <h3 class="mira-finalist__name">Quiet Threads</h3>
+      <p class="mira-finalist__desc">Short-form prompts — communication through images and emoji, lighter than a call, slower than a text.</p>
+    </div>
+  </article>
+
+  <article class="mira-finalist" data-state="sprout">
+    <div class="mira-finalist__art">
+      <svg viewBox="0 0 120 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <line x1="60" y1="220" x2="60" y2="160" stroke="#2F5E3E" stroke-width="2" stroke-linecap="round" />
+        <path d="M 60 160 Q 36 152 32 128 Q 50 124 60 148 Z" fill="#DCA092" />
+        <path d="M 60 160 Q 84 152 88 128 Q 70 124 60 148 Z" fill="#DCA092" />
+      </svg>
+    </div>
+    <div class="mira-finalist__meta">
+      <span class="mira-finalist__score">Score 4</span>
+      <h3 class="mira-finalist__name">Space Between</h3>
+      <p class="mira-finalist__desc">A workshop format with emoji check-ins from young adult to parent, plus invitations to a shared activity.</p>
+    </div>
+  </article>
+</div>
+
+<p class="mira-pivot"><span class="mira-pivot__eyebrow">After review</span>Family Plant won the matrix — but tutor feedback identified five specific concerns. Rather than start over, we held the concept and <em>answered each</em>.</p>
+
+<div class="mira-iter">
+  <div class="mira-iter__row">
+    <div class="mira-iter__concern">
+      <span class="mira-iter__label">Concern · 01</span>
+      <p>Lacks lifestyle integration.</p>
+    </div>
+    <div class="mira-iter__stem" aria-hidden="true"><span class="mira-iter__bud"></span></div>
+    <div class="mira-iter__fix">
+      <span class="mira-iter__label mira-iter__label--fix">Fix</span>
+      <p>Reflections became quick, light, and optional — built to fit busy schedules.</p>
+    </div>
+  </div>
+  <div class="mira-iter__row">
+    <div class="mira-iter__concern">
+      <span class="mira-iter__label">Concern · 02</span>
+      <p>Lacks spatial and procedural presence.</p>
+    </div>
+    <div class="mira-iter__stem" aria-hidden="true"><span class="mira-iter__bud"></span></div>
+    <div class="mira-iter__fix">
+      <span class="mira-iter__label mira-iter__label--fix">Fix</span>
+      <p>The app was replaced by a home-based physical plant — a presence in the room, not in a pocket.</p>
+    </div>
+  </div>
+  <div class="mira-iter__row">
+    <div class="mira-iter__concern">
+      <span class="mira-iter__label">Concern · 03</span>
+      <p>Too app-dependent.</p>
+    </div>
+    <div class="mira-iter__stem" aria-hidden="true"><span class="mira-iter__bud"></span></div>
+    <div class="mira-iter__fix">
+      <span class="mira-iter__label mira-iter__label--fix">Fix</span>
+      <p>Content shifted onto the plant's ambient display. No phone needed.</p>
+    </div>
+  </div>
+  <div class="mira-iter__row">
+    <div class="mira-iter__concern">
+      <span class="mira-iter__label">Concern · 04</span>
+      <p>Doesn't suit the parent's lifestyle.</p>
+    </div>
+    <div class="mira-iter__stem" aria-hidden="true"><span class="mira-iter__bud"></span></div>
+    <div class="mira-iter__fix">
+      <span class="mira-iter__label mira-iter__label--fix">Fix</span>
+      <p>Simpler user flow built for the parent role.</p>
+    </div>
+  </div>
+  <div class="mira-iter__row">
+    <div class="mira-iter__concern">
+      <span class="mira-iter__label">Concern · 05</span>
+      <p>Risks over-control.</p>
+    </div>
+    <div class="mira-iter__stem" aria-hidden="true"><span class="mira-iter__bud"></span></div>
+    <div class="mira-iter__fix">
+      <span class="mira-iter__label mira-iter__label--fix">Fix</span>
+      <p>Two-way communication removed. The plant gives passive, weekly updates — not constant access.</p>
+    </div>
+  </div>
+</div>
+
+<SectionOpener n="05" eyebrow="The concept, named" title="Meet Mira." />
+
+<p class="lead">The chosen concept now had a name and a shape. Mira holds the three components of the brief in one object — a flower for the relationship's mood, a screen for the conversation, a routine to hold them together.</p>
+
+<div class="mira-anatomy">
+  <figure class="mira-anatomy__object" aria-hidden="true">
+    <svg viewBox="0 0 320 620" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <g opacity="0.94">
+        <ellipse cx="160" cy="58" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" />
+        <ellipse cx="192" cy="76" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" transform="rotate(60 192 76)" />
+        <ellipse cx="192" cy="114" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" transform="rotate(120 192 114)" />
+        <ellipse cx="160" cy="132" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" />
+        <ellipse cx="128" cy="114" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" transform="rotate(60 128 114)" />
+        <ellipse cx="128" cy="76" rx="15" ry="24" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1.2" transform="rotate(120 128 76)" />
+        <circle cx="160" cy="95" r="10" fill="#2F5E3E" />
+      </g>
+      <line x1="160" y1="130" x2="160" y2="448" stroke="#2F5E3E" stroke-width="1.5" />
+      <path d="M 160 200 Q 182 192 190 178" fill="none" stroke="#2F5E3E" stroke-width="1.25" />
+      <ellipse cx="190" cy="178" rx="10" ry="4.5" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1" transform="rotate(-30 190 178)" />
+      <path d="M 160 270 Q 138 262 130 248" fill="none" stroke="#2F5E3E" stroke-width="1.25" />
+      <ellipse cx="130" cy="248" rx="10" ry="4.5" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1" transform="rotate(30 130 248)" />
+      <path d="M 160 340 Q 182 332 190 318" fill="none" stroke="#2F5E3E" stroke-width="1.25" />
+      <ellipse cx="190" cy="318" rx="10" ry="4.5" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1" transform="rotate(-30 190 318)" />
+      <path d="M 160 410 Q 138 402 130 388" fill="none" stroke="#2F5E3E" stroke-width="1.25" />
+      <ellipse cx="130" cy="388" rx="10" ry="4.5" fill="#B6CDB1" stroke="#2F5E3E" stroke-width="1" transform="rotate(30 130 388)" />
+      <g stroke="#DCA092" stroke-width="1.4" opacity="0.9">
+        <line x1="148" y1="170" x2="172" y2="170" />
+        <line x1="148" y1="230" x2="172" y2="230" />
+        <line x1="148" y1="290" x2="172" y2="290" />
+        <line x1="148" y1="360" x2="172" y2="360" />
+        <line x1="148" y1="425" x2="172" y2="425" />
+      </g>
+      <path d="M 116 448 L 126 500 L 194 500 L 204 448 Z" fill="none" stroke="#0B0B0E" stroke-width="1.4" />
+      <line x1="110" y1="448" x2="210" y2="448" stroke="#0B0B0E" stroke-width="1.4" />
+      <rect x="84" y="514" width="152" height="84" rx="6" fill="#E8C99A" stroke="#0B0B0E" stroke-width="1.3" />
+      <line x1="100" y1="534" x2="216" y2="534" stroke="#0B0B0E" stroke-width="0.9" opacity="0.55" />
+      <line x1="100" y1="552" x2="200" y2="552" stroke="#0B0B0E" stroke-width="0.9" opacity="0.45" />
+      <line x1="100" y1="570" x2="184" y2="570" stroke="#0B0B0E" stroke-width="0.9" opacity="0.35" />
+      <line x1="100" y1="586" x2="170" y2="586" stroke="#0B0B0E" stroke-width="0.9" opacity="0.28" />
+      <circle cx="210" cy="78" r="3.5" fill="#F4F1EA" stroke="#2F5E3E" stroke-width="1" />
+      <text x="218" y="82" font-family="JetBrains Mono, monospace" font-size="12" fill="#2F5E3E" letter-spacing="0.08em">i</text>
+      <circle cx="258" cy="556" r="3.5" fill="#F4F1EA" stroke="#0B0B0E" stroke-width="1" />
+      <text x="266" y="560" font-family="JetBrains Mono, monospace" font-size="12" fill="#0B0B0E" letter-spacing="0.08em">ii</text>
+      <circle cx="38" cy="290" r="3.5" fill="#F4F1EA" stroke="#0B0B0E" stroke-width="1" />
+      <text x="10" y="282" font-family="JetBrains Mono, monospace" font-size="12" fill="#A8552F" letter-spacing="0.08em">iii</text>
+    </svg>
+  </figure>
+
+  <ol class="mira-anatomy__list">
+    <li class="mira-anatomy__part" data-tone="sage">
+      <span class="mira-anatomy__marker"><span class="mira-anatomy__num">i</span><span class="mira-anatomy__kicker">Physical</span></span>
+      <h3 class="mira-anatomy__title">A flower that reflects the relationship.</h3>
+      <p>The plant is the emotional anchor. Its bloom visibly shifts with the health of the relationship — bright and open when the channel is alive, drawn and pale when it isn't.</p>
+    </li>
+    <li class="mira-anatomy__part" data-tone="amber">
+      <span class="mira-anatomy__marker"><span class="mira-anatomy__num">ii</span><span class="mira-anatomy__kicker">Digital</span></span>
+      <h3 class="mira-anatomy__title">A small screen at the base.</h3>
+      <p>A tablet hosts daily check-ins, weekly reflections, and gentle summary updates. Guided enough to be easy, soft enough not to feel like another inbox.</p>
+    </li>
+    <li class="mira-anatomy__part" data-tone="clay">
+      <span class="mira-anatomy__marker"><span class="mira-anatomy__num">iii</span><span class="mira-anatomy__kicker">Processual</span></span>
+      <h3 class="mira-anatomy__title">A routine that does the work over time.</h3>
+      <p>Quiet, recurring rituals — not bursts of contact. Check-ins and reflections turn the object into a steady, ongoing channel rather than another thing to maintain.</p>
+    </li>
+  </ol>
+</div>
+
+<p class="mira-pivot"><span class="mira-pivot__eyebrow">Becoming an object</span>From paper to colour to a thing on a desk, the screen and the object <em>grew together</em>.</p>
+
+<div class="process-stack">
+  <div class="process-pair">
+    <figure class="process-step process-step--compact">
+      <div class="process-step-meta">
+        <span class="process-step-num">01</span>
+        <h4 class="process-step-title">Sketch</h4>
+        <p>Pencil on paper — relationship-health bar, prompt area, and a small avatar roughed in. The cheapest round, used to argue hierarchy before any pixels were drawn.</p>
+      </div>
+      <div class="process-step-img">
+        <Image src={sketchMira} class="img-rounded-lg" alt="Hand-drawn wireframe of the Mira screen — a percentage, an avatar, and prompts roughed out in pencil." widths={[400, 800, 1200]} sizes="(min-width: 900px) 360px, 90vw" loading="lazy" />
+      </div>
+    </figure>
+
+    <figure class="process-step process-step--compact">
+      <div class="process-step-meta">
+        <span class="process-step-num">02</span>
+        <h4 class="process-step-title">Low-fidelity</h4>
+        <p>Greyscale, no type personality yet. The round that proved the percentage could carry the screen and the prompt could stay short — both states tested in the same frame.</p>
+      </div>
+      <div class="process-step-img">
+        <Image src={lowfiScreen1} alt="Greyscale low-fidelity wireframe of the home screen — percentage at top, prompt area, and a row of action buttons." widths={[400, 800, 1200]} sizes="(min-width: 900px) 360px, 90vw" loading="lazy" />
+      </div>
+    </figure>
+  </div>
+
+  <figure class="process-step process-step--midfi-object">
+    <div class="process-step-meta">
+      <span class="process-step-num">03</span>
+      <h4 class="process-step-title">Mid-fidelity + object</h4>
+      <p>Colour, typography, and the first physical build arrived together. The screen earned its face, and the plant earned its presence — paper flower, taped pole, tablet at the base.</p>
+    </div>
+    <div class="process-step-img process-step-img--row">
+      <Image src={midfi1} alt="Mid-fidelity colour version of the same screen — refined typography, a friendly face, and the percentage as the visual centre." widths={[500, 1000, 1500]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />
+      <div class="mira-physical-frame">
+        <Image src={physicalPrototypeMidfi} alt="The first Mira prototype — a paper flower on a taped pole rising from a small cardboard planter, with a tablet mounted at the base showing a simple face." widths={[500, 1000, 1500]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />
+      </div>
+    </div>
+  </figure>
+</div>
+
+<SectionOpener n="06" eyebrow="Designing for" title="Meet Alex." />
+
+<p class="lead">Affinity diagramming pointed us at one user we kept returning to. Every Mira decision after this was tested against him.</p>
+
+<div class="mira-persona">
+  <aside class="mira-persona__portrait">
+    <div class="mira-persona__doodle">
+      <svg viewBox="0 0 120 150" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true" focusable="false">
+        <path d="M 28 62 Q 22 30 50 22 Q 62 16 76 22 Q 96 28 94 62" />
+        <path d="M 30 56 Q 48 66 72 60 Q 84 58 90 50" />
+        <path d="M 38 60 Q 50 68 62 62" />
+        <path d="M 28 62 Q 30 92 40 106 Q 50 116 60 117 Q 70 116 80 106 Q 90 92 94 62" />
+        <path d="M 28 74 Q 22 78 24 88 Q 26 94 30 93" />
+        <path d="M 94 74 Q 100 78 98 88 Q 96 94 92 93" />
+        <path d="M 39 73 L 49 75" />
+        <path d="M 73 75 L 83 73" />
+        <path d="M 42 81 Q 45 79 48 81" />
+        <path d="M 74 81 Q 77 79 80 81" />
+        <path d="M 60 86 L 58 94 Q 60 96 62 94" />
+        <path d="M 53 103 Q 61 105 68 103" />
+        <line x1="52" y1="117" x2="52" y2="125" />
+        <line x1="68" y1="117" x2="68" y2="125" />
+        <path d="M 10 150 Q 16 130 52 125 L 60 136 L 68 125 Q 104 130 110 150" />
+        <line x1="60" y1="136" x2="60" y2="150" />
+      </svg>
+    </div>
+    <div class="mira-persona__id">
+      <span class="mira-persona__eyebrow">Primary persona</span>
+      <h3 class="mira-persona__name">Alex Chen</h3>
+      <p class="mira-persona__tag">First-year uni · 19 · studying abroad</p>
+    </div>
+  </aside>
+
+  <div class="mira-persona__body">
+    <p class="mira-persona__quote">"I want to meet new people, but I'm not sure where to start."</p>
+
+    <dl class="mira-persona__attrs">
+      <div>
+        <dt>About</dt>
+        <dd>Just left home to study abroad. Looking forward to independence, but every social decision is suddenly his alone. Signed up for a first-year networking event hoping it would do the work for him.</dd>
+      </div>
+      <div>
+        <dt>Frustrations</dt>
+        <dd>Uncertain approaching new people. Feels like everyone else has it figured out — and worries that admitting otherwise would make his parents call more, not less.</dd>
+      </div>
+    </dl>
+
+    <div class="mira-persona__motiv">
+      <span class="mira-persona__motiv-eyebrow">Motivations · what's growing, what isn't</span>
+      <div class="mira-motiv-row">
+        <span class="mira-motiv-label">Independence</span>
+        <div class="mira-motiv-track"><div class="mira-motiv-stem" style={{width: "90%"}}></div></div>
+      </div>
+      <div class="mira-motiv-row">
+        <span class="mira-motiv-label">Need for connection</span>
+        <div class="mira-motiv-track"><div class="mira-motiv-stem" style={{width: "82%"}}></div></div>
+      </div>
+      <div class="mira-motiv-row">
+        <span class="mira-motiv-label">Social confidence</span>
+        <div class="mira-motiv-track"><div class="mira-motiv-stem" style={{width: "26%"}}></div></div>
+      </div>
+      <div class="mira-motiv-row">
+        <span class="mira-motiv-label">Openness with parents</span>
+        <div class="mira-motiv-track"><div class="mira-motiv-stem" style={{width: "34%"}}></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="mira-journey-heading">Alex's year, traced along a single stem.</h2>
+
+<div class="mira-journey">
+  <article class="mira-jstage" data-mood="positive">
+    <div class="mira-jstage__rail" aria-hidden="true"><span class="mira-jstage__node"></span></div>
+    <div class="mira-jstage__primary">
+      <span class="mira-jstage__num">i · January</span>
+      <h3 class="mira-jstage__title">Starting university</h3>
+      <p class="mira-jstage__action">Alex leaves controlling parents behind to start his university life — new place, new degree, a first-year networking event on the calendar.</p>
+      <span class="mira-jstage__mood"><span class="mira-jstage__moodDot"></span>Relief · uncertain</span>
+    </div>
+    <aside class="mira-jstage__block">
+      <span class="mira-jstage__block-label">Opportunity</span>
+      <p>Help young adults develop independent skills that promote open communication — without cutting parents out.</p>
+    </aside>
+  </article>
+
+  <article class="mira-jstage" data-mood="neutral">
+    <div class="mira-jstage__rail" aria-hidden="true"><span class="mira-jstage__node"></span></div>
+    <div class="mira-jstage__primary">
+      <span class="mira-jstage__num">ii · March</span>
+      <h3 class="mira-jstage__title">Attending the event</h3>
+      <p class="mira-jstage__action">Struggles to start conversations. Sits alone for the entire event. Wants to ask his parents for help but doesn't know what to say — leaves feeling defeated.</p>
+      <span class="mira-jstage__mood"><span class="mira-jstage__moodDot"></span>Anxious · stressed</span>
+    </div>
+    <aside class="mira-jstage__block">
+      <span class="mira-jstage__block-label">Pain point</span>
+      <p>Difficulty initiating conversations and engaging with others. New social situations feel overwhelming and draining.</p>
+    </aside>
+  </article>
+
+  <article class="mira-jstage" data-mood="negative">
+    <div class="mira-jstage__rail" aria-hidden="true"><span class="mira-jstage__node"></span></div>
+    <div class="mira-jstage__primary">
+      <span class="mira-jstage__num">iii · The rest of the year</span>
+      <h3 class="mira-jstage__title">Quiet retreat</h3>
+      <p class="mira-jstage__action">Spends the year feeling sad and lonely. Still struggles to find his place and withdraws into his studies and personal space.</p>
+      <span class="mira-jstage__mood"><span class="mira-jstage__moodDot"></span>Fearful · self-doubt</span>
+    </div>
+    <aside class="mira-jstage__block">
+      <span class="mira-jstage__block-label">Opportunity</span>
+      <p>Give young adults a low-effort way to stay close to home without performing the closeness — and to ask for support without making it a crisis.</p>
+    </aside>
+  </article>
+</div>
+
+<SectionOpener n="07" eyebrow="Part 2 · Solo refinement" title="Fifteen people. Twelve changes. One warmer Mira." />
+
+<p class="lead">Part 1 ended with a working mid-fi. Part 2 was mine to push the rest of the way. I ran moderated tests with <strong>fifteen users</strong> — first-year students, parents, and a few fence-sitters — and grouped what they said into three patterns the concept hadn't accounted for.</p>
+
+<div class="mira-insight" data-tone="amber">
+  <div class="mira-insight__text">
+    <span class="mira-insight__eyebrow">Insight i · Recognition</span>
+    <blockquote class="mira-insight__quote">"I didn't realise certain elements were interactive."</blockquote>
+    <p class="mira-insight__body">Soft speech bubbles and the 64% relationship-health number read as decoration. The screen looked finished — but it wasn't asking to be touched.</p>
+    <p class="mira-insight__change"><span class="mira-insight__changeLabel">What changed</span>Speech bubble → labelled "Weekly check-in" button. Percentage removed entirely so attention falls on the one thing to tap.</p>
+  </div>
+  <figure class="mira-insight__figure">
+    <Image src={iter15} alt="Before and after of the Mira home screen — left, the original mint screen with a 64% indicator and a dark speech bubble saying 'Do weekly reflection?'; right, the warmer cream-and-green redesign with a clearly labelled 'Weekly check-in' button." widths={[600, 1000, 1400]} sizes="(min-width: 900px) 640px, 92vw" loading="lazy" />
+    <figcaption class="mira-insight__caption">Mid-fi → hi-fi · home screen</figcaption>
+  </figure>
+</div>
+
+<div class="mira-insight" data-tone="sage">
+  <div class="mira-insight__text">
+    <span class="mira-insight__eyebrow">Insight ii · Navigation</span>
+    <blockquote class="mira-insight__quote">"I struggle when navigating the interface and want more control."</blockquote>
+    <p class="mira-insight__body">Arrow-only navigation made every screen feel like guesswork. Users wanted to know they could go back, redo, or finish — and the sliders didn't tell them where the ends meant.</p>
+    <p class="mira-insight__change"><span class="mira-insight__changeLabel">What changed</span>Every screen earned labelled Back / Next / Done buttons. Sliders gained anchor labels at each interval. A redo button arrived on every voice prompt.</p>
+  </div>
+  <figure class="mira-insight__figure">
+    <Image src={iter16} alt="Before and after of the check-in question screen — left, an early version with ambiguous arrow icons and vague slider endpoints; right, the hi-fi version with explicit 'Back' and 'Next' buttons and three anchor labels under the slider." widths={[600, 1000, 1400]} sizes="(min-width: 900px) 640px, 92vw" loading="lazy" />
+    <figcaption class="mira-insight__caption">Mid-fi → hi-fi · check-in flow</figcaption>
+  </figure>
+</div>
+
+<div class="mira-insight" data-tone="clay">
+  <div class="mira-insight__text">
+    <span class="mira-insight__eyebrow">Insight iii · Warmth</span>
+    <blockquote class="mira-insight__quote">"I want it to feel warmer — not generic and flat."</blockquote>
+    <p class="mira-insight__body">The mint palette was the loudest thing in the mid-fi, and users read it as clinical. Mira is meant to feel like a houseplant on a windowsill, not a hospital pamphlet — and the static <em>87%</em> wasn't carrying the emotional weight the concept asked it to.</p>
+    <p class="mira-insight__change"><span class="mira-insight__changeLabel">What changed</span>Mint became cream, deep green, and warm clay. The percentage retired — the <em>whole screen</em> now takes a colour that maps to the plant's health, so the relationship's mood is felt before it's read.</p>
+  </div>
+  <figure class="mira-insight__figure">
+    <Image src={iter25} alt="Before and after of the relationship-mood screen — left, the mid-fi shows a single mint-green smile screen with an 87% percentage and a small speech bubble; right, the hi-fi shows two screens, one warm yellow-green when the relationship is healthy and one muted sage when it needs attention." widths={[600, 1000, 1400]} sizes="(min-width: 900px) 640px, 92vw" loading="lazy" />
+    <figcaption class="mira-insight__caption">Mid-fi → hi-fi · one static screen becomes two states</figcaption>
+  </figure>
+</div>
+
+<p class="mira-pivot"><span class="mira-pivot__eyebrow">And the object itself</span>The plant on the desk needed the same honesty. The paper flower had done its job in the mid-fi — but the hi-fi asked Mira to be <em>believable as a houseplant</em>.</p>
+
+<figure class="mira-iter-physical">
+  <Image src={iter26} alt="Side-by-side of the Mira physical prototype — left, the mid-fi paper flower taped to a wooden pole rising out of a small cardboard planter with a green tablet showing a face; right, the refined hi-fi version with a real orange hibiscus, a textured terracotta-painted pot with visible soil, and a tablet showing the same face screen." widths={[700, 1200, 1700]} sizes="(min-width: 900px) 920px, 96vw" loading="lazy" />
+  <figcaption class="mira-iter-physical__caption">Mid-fi → hi-fi · paper flower replaced by a real one; planter gets soil, terracotta paint, and a ceramic-like finish</figcaption>
+</figure>
+
+<SectionOpener n="08" eyebrow="Final design" title="Mira, finished." />
+
+<p class="lead">A warmer palette. A clearer flow. A real flower. The pieces that started as a team-of-three concept now hold together as one object — quiet enough to live on a desk, honest enough to be noticed.</p>
+
+<figure class="mira-final-screens">
+  <Image src={miraHighfiScreens} alt="Grid of the final hi-fi Mira screens — home with the Weekly check-in button, the four-step reflection flow with labelled sliders and voice prompts, the completion screen, and the themed reflections summary with icon cards for Independence, Connection, Achievement, and Interaction." widths={[800, 1400, 2000]} sizes="(min-width: 900px) 980px, 96vw" loading="lazy" />
+  <figcaption class="mira-final-screens__caption">The final hi-fi screen set — cream paper, deep green, and clay accents replace the early mint.</figcaption>
+</figure>
+
+
+<div class="mira-prototype">
+  <div class="mira-prototype__head">
+    <span class="mira-prototype__eyebrow">Interactive prototype</span>
+    <h3 class="mira-prototype__title">Try Mira yourself.</h3>
+    <p class="mira-prototype__note">Tap through the weekly check-in — the same flow fifteen users ran in testing. Best viewed full-screen.</p>
+  </div>
+  <div class="mira-prototype__frame">
+    <iframe
+      src="https://embed.figma.com/proto/vjC79MaZCqBEtVtDTcWYU6/Mira-High-Fi?page-id=0%3A1&node-id=18-351&viewport=-861%2C-3772%2C0.23&scaling=scale-down&content-scaling=fixed&starting-point-node-id=18%3A351&show-proto-sidebar=1&embed-host=share"
+      title="Mira high-fidelity interactive prototype"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<div class="mira-showreel">
+  <div class="mira-showreel__head">
+    <span class="mira-showreel__eyebrow">In motion</span>
+    <h3 class="mira-showreel__title">Mira, in action.</h3>
+    <p class="mira-showreel__note">The Part 2 brief asked for a short showcase video — the prototype in motion, the object on a desk, and the routine that holds them together.</p>
+  </div>
+  <div class="mira-showreel__video">
+    <iframe
+      src="https://www.youtube.com/embed/OuFKcpbPTMM"
+      title="Mira — showcase video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+</div>
+
+<div class="mira-coda">
+  <span class="mira-coda__eyebrow">In closing</span>
+  <h3 class="mira-coda__title">What Part 2 taught me.</h3>
+  <p class="mira-coda__body">The concept was right; the expression wasn't. What read as restraint to the team that built it read as ambiguity to everyone else — a speech bubble that wasn't a button, a percentage that didn't ask to be touched, a palette that meant <em>clinical</em> to the only people who hadn't lived inside the brief. Fifteen sessions made that gap impossible to ignore. Recognition, control, and warmth are easy to talk about and harder to make true.</p>
+  <p class="mira-coda__body">The other thing I'll carry forward sits on the desk. A paper flower works in mid-fi because everything else is still draft. The moment the screen earns its colour, the object has to earn its life too — or the whole thing slips back into prop. Hi-fi isn't a polish pass. It's the round where the design either commits to being the thing it claims to be, or quietly admits it isn't.</p>
+</div>

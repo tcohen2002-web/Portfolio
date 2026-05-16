@@ -1,0 +1,127 @@
+---
+---
+
+<figure class="stickman-thinking" aria-label="Stickman sitting with a sketchbook">
+  <div class="stickman-thinking__stage">
+    <svg
+      viewBox="0 0 220 280"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      role="img"
+      class="stickman-thinking__svg"
+    >
+      <title>Stickman thinking</title>
+
+      <!-- hair tufts -->
+      <path d="M92 36 L88 22" />
+      <path d="M102 33 L102 18" />
+      <path d="M112 34 L116 22" />
+      <path d="M122 38 L128 28" />
+
+      <!-- head -->
+      <circle cx="107" cy="55" r="22" />
+      <!-- eyes -->
+      <circle cx="100" cy="53" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="115" cy="53" r="1.6" fill="currentColor" stroke="none" />
+      <!-- eyebrows -->
+      <path d="M96 46 L104 48" />
+      <path d="M111 48 L119 46" />
+      <!-- slight, thoughtful mouth -->
+      <path d="M102 64 Q107 66 113 64" />
+
+      <!-- neck + body axis -->
+      <path d="M107 78 L107 158" />
+
+      <!-- triangular tunic -->
+      <path d="M107 82 L98 105 L107 155 L116 105 Z" fill="currentColor" />
+
+      <!-- arms going down + forward to hold sketchbook -->
+      <path d="M107 102 L82 142" />
+      <path d="M107 102 L132 142" />
+
+      <!-- sketchbook (open book in lap) -->
+      <path d="M70 142 L144 142" />
+      <path d="M70 142 L70 168" />
+      <path d="M144 142 L144 168" />
+      <path d="M70 168 L107 174 L144 168" />
+      <!-- spine -->
+      <path d="M107 142 L107 174" stroke-width="2" />
+      <!-- page lines -->
+      <path d="M78 150 L98 150" stroke-width="1.4" opacity="0.55" />
+      <path d="M78 158 L96 158" stroke-width="1.4" opacity="0.55" />
+      <path d="M118 150 L136 150" stroke-width="1.4" opacity="0.55" />
+      <path d="M118 158 L132 158" stroke-width="1.4" opacity="0.55" />
+
+      <!-- pencil resting on book -->
+      <path d="M125 134 L150 124" />
+      <path d="M148 122 L153 122 L150 127 Z" fill="currentColor" stroke="none" />
+
+      <!-- crossed legs (X under the book) -->
+      <path d="M92 174 L150 230" />
+      <path d="M122 174 L64 230" />
+      <ellipse cx="60" cy="232" rx="8" ry="3" />
+      <ellipse cx="154" cy="232" rx="8" ry="3" />
+    </svg>
+
+    <div class="stickman-thinking__bubble" aria-hidden="true">
+      <span>what's the simplest<br />move?</span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .stickman-thinking {
+    margin: 0;
+    max-width: 240px;
+  }
+  .stickman-thinking__stage {
+    position: relative;
+  }
+  .stickman-thinking__svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink, #0B0B0E);
+  }
+  .stickman-thinking__bubble {
+    position: absolute;
+    top: -8px;
+    right: -28px;
+    max-width: 10.5rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--paper, #F4F1EA);
+    border: 1.5px solid var(--ink, #0B0B0E);
+    border-radius: 20px 20px 6px 20px;
+    font-family: 'Caveat', 'Bradley Hand', 'Segoe Script', 'Marker Felt', cursive;
+    font-size: 1.05rem;
+    line-height: 1.15;
+    color: var(--ink, #0B0B0E);
+    text-align: center;
+    transform: rotate(-5deg);
+    animation: stickmanBubble 3.6s ease-in-out infinite;
+  }
+  .stickman-thinking__bubble::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    bottom: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper, #F4F1EA);
+    border-right: 1.5px solid var(--ink, #0B0B0E);
+    border-bottom: 1.5px solid var(--ink, #0B0B0E);
+    transform: rotate(-20deg) skew(12deg, 12deg);
+    border-bottom-right-radius: 6px;
+  }
+  @keyframes stickmanBubble {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-3px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stickman-thinking__bubble { animation: none; }
+  }
+</style>

@@ -1,0 +1,372 @@
+---
+n: "03"
+title: "Vamos Bites"
+tagline: "A compact tribute to Rafael Nadal — chocolate, ritual, and Spanish identity in a clay-court timber box."
+description: "Vamos Bites is a hand-cast chocolate set housed in a laser-cut walnut court-box: a personal tribute to Rafael Nadal, built end-to-end across three fabrication modules — Fusion 360 + 3D printing, laser cutting, and Blender rendering — inside DECO2018 at the University of Sydney."
+year: "2025"
+duration: "13 weeks"
+role: "End-to-end (3D modelling, casting, rendering)"
+tools: ["Fusion 360", "Rhino", "Blender", "3D printing", "Laser cutting", "Vacuum forming"]
+outcome: "High Distinction"
+cover: "./_images/vamos-bites/cover.jpg"
+coverAlt: "A walnut timber box opens to reveal a chocolate tennis racquet with a raised 22 and two chocolate ball coins, set against a peach clay-court backdrop."
+coverFullBleed: true
+accent: "#C9633F"
+titleColor: "#4A2E1C"
+draft: false
+---
+
+import SectionOpener from '../../components/SectionOpener.astro';
+import { Image } from 'astro:assets';
+import bullHead from '../../../Rafa/vamos_extras/bull-head.png';
+import fusionRacquet from '../../../Rafa/vamos_extras/fusion-racquet1.png';
+import fusionBalls from '../../../Rafa/vamos_extras/fusion-balls1.png';
+import chocPrint from '../../../Rafa/vamos_extras/choc-print.jpg';
+import chocVacuum from '../../../Rafa/vamos_extras/choc-vacuum.jpg';
+import chocFinished from '../../../Rafa/vamos_extras/choc-finished.jpg';
+import boxEngraving from '../../../Rafa/vamos_extras/box-engraving1.png';
+import boxWithPrint from '../../../Rafa/vamos_extras/box-with-print2.png';
+import materialsHero from '../../../Rafa/vamos_extras/materials1.png';
+import posterArt from '../../../Rafa/vamos_extras/poster.jpg';
+import firstBite from '../../../Rafa/vamos_extras/firstbite.jpg';
+
+<SectionOpener n="01" eyebrow="A tribute" title="Three years in Mallorca. One small box." />
+
+<div class="vamos-opener">
+  <p class="vamos-opener__lede">I trained at the <span class="vamos-opener__hl">Rafa Nadal Academy in Mallorca</span> for three years — long enough to know the heat of the clay, the rhythm of warm-ups before sunrise, and the small rituals players keep to themselves. When DECO2018 asked for a giftable object built across three fabrication methods, I didn't reach for a brief. I reached for a person.</p>
+
+  <p class="vamos-opener__motto"><em>Smash cravings, not your racquet.</em></p>
+</div>
+
+<SectionOpener n="02" eyebrow="The brief" title="A merchandise drop for a team I'd actually buy." />
+
+<div class="vamos-brief">
+  <p class="vamos-brief__lede">DECO2018 set the brief: a thematically branded chocolate, its packaging, and the promotional material to launch it — a merchandise piece for a team at an upcoming major competitive event. The brief picked the deliverables. <em>I picked the team.</em></p>
+
+  <dl class="vamos-brief__summary" aria-label="Brief — at a glance">
+    <div class="vamos-brief__summary-row">
+      <dt>Deliverables</dt>
+      <dd>3 modules · 1 object</dd>
+    </div>
+    <div class="vamos-brief__summary-row">
+      <dt>Audience</dt>
+      <dd>Loyal fans · curious newcomers</dd>
+    </div>
+    <div class="vamos-brief__summary-row">
+      <dt>Position</dt>
+      <dd>Collectible · premium</dd>
+    </div>
+  </dl>
+
+  <p class="vamos-brief__coda">No team logos for sale — the tribute had to be built from <em>form, ritual, and material.</em></p>
+
+  <ol class="vamos-triptych" aria-label="Three fabrication modules">
+    <li class="vamos-triptych__card">
+      <span class="vamos-triptych__numeral">M·A</span>
+      <span class="vamos-triptych__module">Additive</span>
+      <span class="vamos-triptych__tool">Fusion 360 → 3D print</span>
+      <span class="vamos-triptych__output">The chocolate mould.</span>
+    </li>
+    <li class="vamos-triptych__card">
+      <span class="vamos-triptych__numeral">M·B</span>
+      <span class="vamos-triptych__module">Subtractive</span>
+      <span class="vamos-triptych__tool">Fusion 360 → Laser cut</span>
+      <span class="vamos-triptych__output">The walnut court-box.</span>
+    </li>
+    <li class="vamos-triptych__card">
+      <span class="vamos-triptych__numeral">M·C</span>
+      <span class="vamos-triptych__module">Materials</span>
+      <span class="vamos-triptych__tool">Blender</span>
+      <span class="vamos-triptych__output">The promo render.</span>
+    </li>
+  </ol>
+</div>
+
+<SectionOpener n="03" eyebrow="The first idea" title="A bull that didn't make it to chocolate." />
+
+<div class="vamos-pivot">
+  <p class="vamos-pivot__lede">The first sketch was a bull's head. It checked every box on paper — Spain in one stroke, and a quiet wink to Rafa's own silhouette logo, the charging bull. I went into tutor consults proud of it.</p>
+
+  <div class="vamos-pivot__body">
+    <p>The tutors were kind but direct: a bull head, in chocolate, at this scale, with these printable mould draft angles? The horns alone were going to fight me — undercuts, demoulding, finish quality. By the third consult it was clear the geometry wasn't going to survive contact with a vacuum-formed mould.</p>
+
+    <blockquote class="vamos-pivot__pull">
+      <p>The ambition didn't disappear.<br/>It migrated.</p>
+    </blockquote>
+
+    <p>So I let the bull go. The chocolates stayed honest — a racquet and two balls, forms that <em>want</em> to be moulded. Everything I'd wanted the bull to carry — the Spanishness, the ritual, the sense of <em>occasion</em> — got rebuilt into the box.</p>
+  </div>
+
+  <figure class="vamos-pivot__figure">
+    <Image src={bullHead} alt="A 3D render of a bull's head — the abandoned first concept for the chocolate form." widths={[640, 960, 1280, 1600]} sizes="(max-width: 768px) 100vw, 75vw" />
+    <figcaption>Concept render — the bull's head,<br/>before the geometry talked back.</figcaption>
+  </figure>
+</div>
+
+<SectionOpener n="04" eyebrow="M·A — The chocolate" title="From a 22 in CAD to a 22 in chocolate." />
+
+<div class="vamos-choc">
+  <div class="vamos-choc__opener">
+    <span class="vamos-choc__numeral" aria-hidden="true">22</span>
+    <p class="vamos-choc__lede">Nadal won twenty-two Grand Slams. The racquet's where he wrote them. So the centrepiece had to be a racquet — and the number had to be on it, raised, the way medals carry numbers on their backs.</p>
+  </div>
+
+  <div class="vamos-choc__body">
+    <p>In Fusion, the racquet started life as a flat coin and grew an extruded <strong>22</strong> through the strings. The two ball-coins beside it weren't decoration — every player's bag carries a spare. Three pieces, set together, become a kit.</p>
+  </div>
+
+  <section class="cad-sheet" aria-label="Chocolate geometry — Fusion 360 specimen sheet">
+    <header class="cad-sheet__title">
+      <span class="cad-sheet__stamp">M·A</span>
+      <span class="cad-sheet__label">Chocolate geometry · Fusion 360</span>
+    </header>
+
+    <div class="cad-sheet__grid">
+      <figure class="cad-sheet__panel">
+        <div class="cad-sheet__panel-frame">
+          <Image src={fusionRacquet} alt="Fusion 360 model of the chocolate racquet coin, with a raised 22 across the strings." widths={[480, 720, 960]} sizes="(max-width: 768px) 90vw, 420px" />
+        </div>
+        <figcaption>
+          <span class="cad-sheet__index">01</span>
+          <span class="cad-sheet__part">Racquet</span>
+          <span class="cad-sheet__spec">Coin form · relief: "22"</span>
+        </figcaption>
+      </figure>
+
+      <figure class="cad-sheet__panel">
+        <div class="cad-sheet__panel-frame">
+          <Image src={fusionBalls} alt="Fusion 360 model of the two chocolate ball coins." widths={[480, 720, 960]} sizes="(max-width: 768px) 90vw, 420px" />
+        </div>
+        <figcaption>
+          <span class="cad-sheet__index">02</span>
+          <span class="cad-sheet__part">Ball</span>
+          <span class="cad-sheet__spec">Coin form · ×2</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <footer class="cad-sheet__rule">
+      <span>Material: PLA → vac-form → dark chocolate 70%</span>
+      <span>Sheet 1/1</span>
+    </footer>
+  </section>
+
+  <ol class="vamos-process" aria-label="Chocolate fabrication — process strip">
+    <li class="vamos-process__step">
+      <span class="vamos-process__num">01</span>
+      <span class="vamos-process__label">Vacuum form</span>
+      <div class="vamos-process__image">
+        <Image src={chocPrint} alt="A 3D-printed PLA positive on the vacuum-former, with a heated plastic sheet drawn tight over the form." widths={[480, 720, 960, 1200]} sizes="(max-width: 768px) 90vw, 30vw" />
+      </div>
+      <p class="vamos-process__caption">The PLA positive becomes a negative mould — a plastic sheet heated and sucked over the print.</p>
+    </li>
+
+    <li class="vamos-process__step">
+      <span class="vamos-process__num">02</span>
+      <span class="vamos-process__label">Cast + chill</span>
+      <div class="vamos-process__image">
+        <Image src={chocVacuum} alt="Tempered chocolate poured into the plastic mould, an ice pack pressed against the back to set the cast." widths={[480, 720, 960, 1200]} sizes="(max-width: 768px) 90vw, 30vw" />
+      </div>
+      <p class="vamos-process__caption">Tempered chocolate poured in, set with an ice pack pressed to the back.</p>
+    </li>
+
+    <li class="vamos-process__step">
+      <span class="vamos-process__num">03</span>
+      <span class="vamos-process__label">Demould</span>
+      <div class="vamos-process__image">
+        <Image src={chocFinished} alt="Three finished chocolate pieces — a racquet with a raised 22 and two ball coins — laid out on the work surface." widths={[480, 720, 960, 1200]} sizes="(max-width: 768px) 90vw, 30vw" />
+      </div>
+      <p class="vamos-process__caption">Three pieces, popped clean. Two balls. One racquet. One twenty-two.</p>
+    </li>
+  </ol>
+
+  <p class="vamos-choc__coda"><em>Chocolate has a memory. Tempering is just teaching it to stay.</em></p>
+</div>
+
+<SectionOpener n="05" eyebrow="M·B — The box" title="The bull stayed. The court became the box." />
+
+<div class="vamos-box">
+  <p class="vamos-box__lede">The box did the work the chocolate couldn't. Walnut, laser-cut, with the lid engraved with everything the chocolate had to leave behind — Rafa's name, his charging-bull logo, the title, and the court itself.</p>
+
+  <div class="vamos-box__body">
+    <p>Walnut for warmth — close-grained, takes engraving cleanly, reads as a club-bench rather than a craft project. The lid carries the whole identity, etched in two passes: low-power for the court lines, deeper for the type.</p>
+
+    <aside class="vamos-lid" aria-label="Lid — engraving inventory">
+      <header class="vamos-lid__head">
+        <span class="vamos-lid__stamp">Lid</span>
+        <span class="vamos-lid__label">Engraving inventory</span>
+      </header>
+      <dl class="vamos-lid__list">
+        <div class="vamos-lid__row">
+          <dt>Top</dt>
+          <dd><span class="vamos-lid__value">RAFA</span><span class="vamos-lid__note">Wordmark</span></dd>
+        </div>
+        <div class="vamos-lid__row">
+          <dt>Middle</dt>
+          <dd><span class="vamos-lid__value">Bull logo</span><span class="vamos-lid__note">Mark</span></dd>
+        </div>
+        <div class="vamos-lid__row">
+          <dt>Bottom</dt>
+          <dd><span class="vamos-lid__value"><em>Vamos Bites</em></span><span class="vamos-lid__note">Title</span></dd>
+        </div>
+        <div class="vamos-lid__row">
+          <dt>Surface</dt>
+          <dd><span class="vamos-lid__value">Court lines</span><span class="vamos-lid__note">Etched, low-power</span></dd>
+        </div>
+      </dl>
+    </aside>
+
+    <p>Inside, the timber is cut to seat the three chocolates — racquet down the centre, two ball-coins to the side. The lid lifts off the base. No hinge, no clasp. You lift it by a small tennis net stretched across the top.</p>
+  </div>
+
+  <section class="cad-sheet" aria-label="Box lid — walnut, laser-cut">
+    <header class="cad-sheet__title">
+      <span class="cad-sheet__stamp">M·B</span>
+      <span class="cad-sheet__label">Lid · walnut · laser-cut</span>
+    </header>
+
+    <div class="cad-sheet__grid">
+      <figure class="cad-sheet__panel cad-sheet__panel--align-bottom">
+        <div class="cad-sheet__panel-frame">
+          <Image src={boxEngraving} alt="Close-up of the laser-engraved lid, showing the RAFA wordmark, bull-and-racquet logo, court lines, and Vamos Bites title on walnut." widths={[480, 720, 960, 1200]} sizes="(max-width: 768px) 90vw, 420px" />
+        </div>
+        <figcaption>
+          <span class="cad-sheet__index">01</span>
+          <span class="cad-sheet__part">Engrave pass</span>
+          <span class="cad-sheet__spec">Low-power lines · deeper type</span>
+        </figcaption>
+      </figure>
+
+      <figure class="cad-sheet__panel cad-sheet__panel--feature">
+        <div class="cad-sheet__panel-frame">
+          <Image src={boxWithPrint} alt="The finished walnut lid with all engravings burned in, sitting on the bench before assembly." widths={[480, 720, 960, 1200]} sizes="(max-width: 768px) 90vw, 420px" />
+        </div>
+        <figcaption>
+          <span class="cad-sheet__index">02</span>
+          <span class="cad-sheet__part">Lid, finished</span>
+          <span class="cad-sheet__spec">Walnut · sanded · unfinished</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <footer class="cad-sheet__rule">
+      <span>Material: walnut · laser-engraved + cut · unfinished</span>
+      <span>Sheet 1/1</span>
+    </footer>
+  </section>
+
+  <p class="vamos-box__coda"><em>You don't lift the lid by a hinge. You lift it by the net.</em></p>
+</div>
+
+<SectionOpener n="06" eyebrow="M·C — The render" title="Creating the materials." />
+
+<div class="vamos-render">
+  <div class="vamos-render__body">
+    <p><span class="vamos-render__kicker">Palette</span>The material-showcase brief made me consider what the surfaces should <em>mean</em> as well as how they look. Gold and Spain's red and yellow led the palette: gold to honour a champion and his Olympic history; red and yellow to declare Spanish identity, echo clay, and nod to the tennis ball.</p>
+
+    <p><span class="vamos-render__kicker">Trial</span>I trialled plastic and cardboard outers — both felt everyday. A full-wood shell had warmth, but softened Rafa's attitude. That pivoted me to refine the form and weave in recognisable cues: Spanish multi-coloured bull eyes for quiet pride, and small gold Nike ticks like jewellery, connecting the object to his lifelong sponsor.</p>
+
+    <p><span class="vamos-render__kicker">Staging</span>I re-staged the opening so the horns read like lightning as the lid lifts, framing the chocolate racquet and two balls. Across passes I sharpened planes and tuned materials until it balanced restraint with energy. Six materials, one frame.</p>
+  </div>
+
+  <figure class="vamos-render__hero">
+    <Image src={materialsHero} alt="A high-resolution Blender render of the open Vamos Bites box: walnut timber, a gold-rimmed racquet chocolate set into a clay-orange interior, two ball coins beside it, with red-and-yellow plastic accents." widths={[960, 1280, 1600, 2000, 2400]} sizes="(max-width: 768px) 100vw, 95vw" />
+    <figcaption>Final Blender pass — all six materials applied, one frame.</figcaption>
+  </figure>
+
+  <ol class="materials-strip" aria-label="Materials applied in the Blender pass">
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: #4A2E1C;"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">01</span>
+        <span class="materials-strip__name">Walnut</span>
+        <span class="materials-strip__spec">Roughness 0.65 · IOR 1.50</span>
+      </div>
+    </li>
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: linear-gradient(135deg, #E6BE65 0%, #B98A2C 100%);"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">02</span>
+        <span class="materials-strip__name">Gold</span>
+        <span class="materials-strip__spec">Metallic 1.00 · Roughness 0.12</span>
+      </div>
+    </li>
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: #ECDDB7;"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">03</span>
+        <span class="materials-strip__name">White chocolate</span>
+        <span class="materials-strip__spec">Subsurface 0.22 · Roughness 0.38</span>
+      </div>
+    </li>
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: #8B5E3C;"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">04</span>
+        <span class="materials-strip__name">Milk chocolate</span>
+        <span class="materials-strip__spec">Subsurface 0.18 · Roughness 0.32</span>
+      </div>
+    </li>
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: #2D1810;"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">05</span>
+        <span class="materials-strip__name">Dark chocolate</span>
+        <span class="materials-strip__spec">Subsurface 0.14 · Roughness 0.28</span>
+      </div>
+    </li>
+    <li class="materials-strip__swatch">
+      <div class="materials-strip__chip" style="background: repeating-linear-gradient(45deg, #C84432 0 10px, #F2C94C 10px 20px);"></div>
+      <div class="materials-strip__meta">
+        <span class="materials-strip__num">06</span>
+        <span class="materials-strip__name">Plastic · red &amp; yellow</span>
+        <span class="materials-strip__spec">IOR 1.46 · Roughness 0.23</span>
+      </div>
+    </li>
+  </ol>
+
+  <p class="vamos-render__coda"><em>Light is the last material. You don't pour it; you find it.</em></p>
+</div>
+
+<SectionOpener n="07" eyebrow="The poster" title="One sheet, one breath." />
+
+<div class="vamos-poster">
+  <div class="vamos-poster__grid">
+    <figure class="vamos-poster__stage">
+      <Image src={posterArt} alt="A2 poster for Vamos Bites: a warm-tan background with the headline 'RAFA NADAL — VAMOS BITES' above the open chocolate-and-walnut box, and a large bull silhouette anchoring the bottom." widths={[640, 960, 1280, 1600]} sizes="(max-width: 900px) 90vw, 48vw" class="vamos-poster__print" />
+    </figure>
+
+    <div class="vamos-poster__notes">
+      <div class="vamos-poster__note">
+        <span class="vamos-poster__kicker">01 — Palette</span>
+        <p>Every module had its own palette — chocolate, walnut, the red and yellow plastic of the render. The poster pulled all of it back to <em>one warm tan</em>. Object centred, headline above, bull silhouette below.</p>
+      </div>
+
+      <div class="vamos-poster__note">
+        <span class="vamos-poster__kicker">02 — The bull</span>
+        <p>The bull that pivoted the project sits underneath as a quiet silhouette. Where it once nearly <em>was</em> the box, here it just signs the work.</p>
+      </div>
+
+      <div class="vamos-poster__note">
+        <span class="vamos-poster__kicker">03 — The motto</span>
+        <p>And the line I'd kept since the first sketch finally got somewhere to live.</p>
+      </div>
+
+      <p class="vamos-poster__motto">Smash cravings,<br/>not your racquet.</p>
+    </div>
+  </div>
+</div>
+
+<SectionOpener n="08" eyebrow="First bite" title="Vamos." />
+
+<div class="vamos-close">
+  <figure class="vamos-close__figure">
+    <Image src={firstBite} alt="Tal Cohen in the DECO2018 workshop, taking the first bite from the chocolate tennis racquet — the bite mark visible at the rim." widths={[480, 720, 960, 1280]} sizes="(max-width: 768px) 90vw, 520px" class="vamos-close__image" />
+  </figure>
+
+  <div class="vamos-close__copy">
+    <p class="vamos-close__coda">After three modules — print, cut, render — the project ended the way it should have. <em>Someone bit it.</em> The racquet held its shape. The chocolate did what chocolate does.</p>
+
+    <p class="vamos-close__signoff"><span>2025</span><span aria-hidden="true">·</span><span>DECO2018</span><span aria-hidden="true">·</span><span>University of Sydney</span></p>
+  </div>
+</div>

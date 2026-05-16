@@ -1,0 +1,51 @@
+---
+interface Props {
+  attribution?: string;
+}
+
+const { attribution } = Astro.props;
+---
+
+<blockquote class="pull-quote">
+  <div class="pull-quote-text">
+    <slot />
+  </div>
+  {attribution && (
+    <footer class="pull-quote-attr">— {attribution}</footer>
+  )}
+</blockquote>
+
+<style>
+  .pull-quote {
+    margin: 0;
+    padding: 0;
+  }
+  .pull-quote-text {
+    font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink, #0B0B0E);
+    margin: 0;
+    font-size: clamp(1.375rem, 2.3vw, 1.875rem);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+  .pull-quote-text :global(p) {
+    margin: 0;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  .pull-quote-attr {
+    margin-top: 0.9rem;
+    margin-left: 0;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute, #6B6B70);
+  }
+</style>

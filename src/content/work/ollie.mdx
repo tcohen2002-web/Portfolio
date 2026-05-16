@@ -1,0 +1,430 @@
+---
+n: "01"
+title: "Ollie"
+tagline: "A multimodal social network connecting Olympic athletes across cultures."
+description: "Ollie is a paired phone-and-watch social network for Olympic athletes — designed to make low-stakes contact possible across cultures, languages, and the rivalries built into competition."
+year: "2024"
+duration: "13 weeks"
+role: "UX/UI Designer"
+team: "Ruoting Gu & Wanqi Zhang"
+tools: ["Figma"]
+outcome: "High Distinction"
+cover: "./_images/ollie/cover.png"
+coverAlt: "Ollie phone app and watch companion, side by side."
+accent: "#DCD7EC"
+titleColor: "#4F46E5"
+figmaUrl: "https://embed.figma.com/proto/rnoae3OyPx01KbJhTSBTx8/Tal-Cohen---Ollie-App---Interaction-Design?node-id=0-1&embed-host=share"
+draft: false
+---
+
+import SectionOpener from '../../components/SectionOpener.astro';
+import ScreenShowcase from '../../components/ScreenShowcase.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import FigmaEmbed from '../../components/FigmaEmbed.astro';
+import { Image } from 'astro:assets';
+import phone1 from '../../../Ollie/Ollie_product/phone1.png';
+import phone3 from '../../../Ollie/Ollie_product/phone3.png';
+import watch1 from '../../../Ollie/Ollie_product/watch1.png';
+import watch2 from '../../../Ollie/Ollie_product/watch2.png';
+import watch3 from '../../../Ollie/Ollie_product/watch3.png';
+import sketch1 from '../../../process/sketch1.png';
+import sketch2 from '../../../process/skecth2.png';
+import sketch3 from '../../../process/skecth3.png';
+import lowfi from '../../../process/lowfi1.png';
+import midfi from '../../../process/mid-fi.png';
+import midfiWatch from '../../assets/ollie/midfi-watch.png';
+import storyboard from '../../assets/ollie/storyboard.png';
+
+<SectionOpener n="01" eyebrow="The brief" title="Build something that doesn't already exist for athletes." />
+
+<div class="brief-grid">
+  <div class="brief-prose">
+    <p>Olympic athletes spend years moving between cultures — training camps, athlete villages, qualifying tours. The brief, set inside Design Computing at the University of Sydney, was open: design a digital product that supports the relationships between athletes in a way existing tools don't.</p>
+    <p>We were a team of three with thirteen weeks. Every decision after the brief was tested against that one constraint.</p>
+  </div>
+
+  <PullQuote attribution="Self-imposed constraint">
+    The product had to assume <span class="hl">rivalry was a feature, not a bug</span>.
+  </PullQuote>
+</div>
+
+<SectionOpener n="02" eyebrow="The problem" title="Three forces working against connection." />
+
+<div class="three-up">
+  <div>
+    <span class="three-up-item-num">i · Language</span>
+    <h3 class="three-up-item-title">Most contact happens without translation.</h3>
+    <p class="three-up-item-body">Formal events are interpreted; the casual contact between athletes — dining halls, warm-ups, shared rooms — is not. Bee et al. (2019) point to this informal layer as where friendships actually form, and where language gaps quietly close them down.</p>
+  </div>
+  <div>
+    <span class="three-up-item-num">ii · Culture</span>
+    <h3 class="three-up-item-title">Subtle mismatches do more damage than open hostility.</h3>
+    <p class="three-up-item-body">Norms around eye contact, personal space, and humour differ widely between sporting cultures. A 2024 paper in <em>Frontiers in Psychology</em> found these small mismatches end conversations more often than any active conflict between athletes.</p>
+  </div>
+  <div>
+    <span class="three-up-item-num">iii · Rivalry</span>
+    <h3 class="three-up-item-title">The competitive stance follows athletes off the court.</h3>
+    <p class="three-up-item-body">Athletes are trained to read competitors as threats. Berendt et al. (2016) describe how this posture — useful in performance — persists into the spaces where the Olympics is supposed to celebrate cultural exchange.</p>
+  </div>
+</div>
+
+<SectionOpener n="03" eyebrow="Research" title="Three methods. One problem statement." />
+
+<p class="lead">We triangulated to keep one stream from biasing the rest. Surveys gave us scale, interviews gave us texture, ethnography gave us what athletes said when no researcher was in the room.</p>
+
+<div class="research-methods">
+  <div>
+    <span class="rm-num">31</span>
+    <span class="rm-label">Survey responses</span>
+  </div>
+  <div>
+    <span class="rm-num">5</span>
+    <span class="rm-label">Structured interviews</span>
+  </div>
+  <div>
+    <span class="rm-num">3</span>
+    <span class="rm-label">Platforms · online ethnography</span>
+  </div>
+</div>
+
+<div class="quote-tiles">
+  <div class="quote-tile">
+    <span class="quote-tile-eyebrow">i · Language</span>
+    <p class="quote-tile-body">"There was always some sort of <span class="hl">language barrier</span> in terms of whether the ball was in or out. Communicating was definitely sometimes a little shaky."</p>
+    <span class="quote-tile-attr">Interview · Tennis</span>
+  </div>
+  <div class="quote-tile">
+    <span class="quote-tile-eyebrow">ii · Rivalry</span>
+    <p class="quote-tile-body">"I mostly <span class="hl">saw them as competitors</span>. I didn't go beyond the usual small talk unless I knew them personally beforehand."</p>
+    <span class="quote-tile-attr">Interview · Football</span>
+  </div>
+  <div class="quote-tile">
+    <span class="quote-tile-eyebrow">iii · Connection</span>
+    <p class="quote-tile-body">"For us to be at two different ends of the spectrum and still <span class="hl">come together and be great mates</span> is something I'll cherish for the rest of my life."</p>
+    <span class="quote-tile-attr">Interview · 15+ years competing</span>
+  </div>
+</div>
+
+<div class="statement-card">
+  <span class="statement-card-eyebrow">Problem statement</span>
+  <p class="statement-card-body">The Olympics creates a competitive environment where sportsmanship and unity between athletes are undermined. There are fewer opportunities for cultural exchange and athletes are less likely to share mutual respect — a fragmented atmosphere that diminishes the Olympic experience itself.</p>
+</div>
+
+<SectionOpener n="04" eyebrow="Synthesis" title="From three streams of data to one person." />
+
+<p class="lead">Affinity diagramming surfaced one user we kept returning to. Every product decision after this point was tested against him.</p>
+
+<div class="persona-card">
+  <div class="persona-photo-frame">
+    <div class="persona-doodle-wrap">
+      <svg class="persona-doodle" viewBox="0 0 120 150" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true" focusable="false">
+        <path d="M 26 58 Q 22 26 50 18 Q 58 12 70 18 Q 96 22 94 52 Q 80 36 60 44 Q 40 36 26 58 Z" />
+        <path d="M 40 30 L 44 22" />
+        <path d="M 56 26 L 60 18" />
+        <path d="M 72 28 L 76 20" />
+        <path d="M 28 58 Q 28 82 36 102 Q 44 114 52 116 L 68 116 Q 76 114 84 102 Q 92 82 92 58" />
+        <path d="M 30 78 Q 23 80 24 88 Q 25 94 32 94" />
+        <path d="M 90 78 Q 97 80 96 88 Q 95 94 88 94" />
+        <path d="M 40 68 Q 46 64 52 68" />
+        <path d="M 68 68 Q 74 64 80 68" />
+        <path d="M 40 78 Q 46 73 52 78 Q 46 82 40 78 Z" fill="currentColor" />
+        <path d="M 68 78 Q 74 73 80 78 Q 74 82 68 78 Z" fill="currentColor" />
+        <path d="M 58 86 Q 57 94 60 97 Q 63 96 62 90" />
+        <path d="M 50 104 Q 60 109 70 104" />
+        <line x1="50" y1="116" x2="50" y2="125" />
+        <line x1="70" y1="116" x2="70" y2="125" />
+        <path d="M 10 150 Q 18 130 50 125 L 60 135 L 70 125 Q 102 130 110 150" />
+      </svg>
+    </div>
+    <div class="persona-photo-caption">
+      <span class="persona-eyebrow">Primary persona</span>
+      <h3 class="persona-name">Alex</h3>
+      <p class="persona-tag">Olympic tennis player · 27</p>
+    </div>
+  </div>
+
+  <div class="persona-content">
+    <p class="persona-quote">"I won't let them win."</p>
+
+    <dl class="persona-attrs">
+      <div>
+        <dt>About</dt>
+        <dd>Highly competitive and driven by rivalry. Reads every opponent as a threat — a posture that doesn't switch off when he leaves the court.</dd>
+      </div>
+      <div>
+        <dt>Frustrations</dt>
+        <dd>Isolated in athlete villages. Struggles with team dynamics, resents collaboration, and finds language gaps end most casual conversations early.</dd>
+      </div>
+    </dl>
+
+    <div class="persona-motivations">
+      <span class="persona-motivations-eyebrow">Motivations</span>
+      <div class="persona-motivation-row">
+        <span class="persona-motivation-label">Competitive drive</span>
+        <div class="persona-motivation-bar"><div class="persona-motivation-fill" style="width: 95%;"></div></div>
+      </div>
+      <div class="persona-motivation-row">
+        <span class="persona-motivation-label">Cultural curiosity</span>
+        <div class="persona-motivation-bar"><div class="persona-motivation-fill" style="width: 30%;"></div></div>
+      </div>
+      <div class="persona-motivation-row">
+        <span class="persona-motivation-label">Social energy</span>
+        <div class="persona-motivation-bar"><div class="persona-motivation-fill" style="width: 25%;"></div></div>
+      </div>
+      <div class="persona-motivation-row">
+        <span class="persona-motivation-label">Language adaptability</span>
+        <div class="persona-motivation-bar"><div class="persona-motivation-fill" style="width: 20%;"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<SectionOpener n="05" eyebrow="Journey" title="A day in Alex's life." />
+
+<p class="lead">We mapped Alex's experience across one tournament day. The emotional arc told us where Ollie could intervene — and where it shouldn't try.</p>
+
+<figure class="storyboard">
+  <Image src={storyboard} alt="Hand-drawn six-panel storyboard following Alex through a tournament day — arrival, locker room, on-court dispute, racket-smash, lunch alone, hotel room at night." widths={[640, 1024, 1440]} sizes="(min-width: 1024px) 1100px, 90vw" />
+  <figcaption>"Lost in translation" — Alex across six scenes</figcaption>
+</figure>
+
+<h2 class="journey-heading">Alex's day, mapped across five stages.</h2>
+
+<div class="journey-map">
+  <div class="journey-stage" data-mood="positive">
+    <span class="journey-stage-num">01</span>
+    <h4 class="journey-stage-title">Arrival</h4>
+    <p class="journey-action">Alex arrives at the tournament village.</p>
+    <div class="journey-emotion">
+      <span class="journey-dot"></span>
+      <span class="journey-mood">Anticipation</span>
+    </div>
+    <div class="journey-block">
+      <span class="journey-label">Opportunity</span>
+      <p>Organise low-stakes activities for new arrivals — a structured way in before the competing starts.</p>
+    </div>
+  </div>
+
+  <div class="journey-stage" data-mood="positive">
+    <span class="journey-stage-num">02</span>
+    <h4 class="journey-stage-title">Before the match</h4>
+    <p class="journey-action">Sits alone in the locker room.</p>
+    <div class="journey-emotion">
+      <span class="journey-dot"></span>
+      <span class="journey-mood">Calm</span>
+    </div>
+    <div class="journey-block">
+      <span class="journey-label">Opportunity</span>
+      <p>Make low-effort presence visible — let other athletes know he's around without forcing conversation.</p>
+    </div>
+  </div>
+
+  <div class="journey-stage" data-mood="neutral">
+    <span class="journey-stage-num">03</span>
+    <h4 class="journey-stage-title">Match</h4>
+    <p class="journey-action">Umpire rules against Alex's ball. He believes it was in.</p>
+    <div class="journey-emotion">
+      <span class="journey-dot"></span>
+      <span class="journey-mood">Confused, upset</span>
+    </div>
+    <div class="journey-block">
+      <span class="journey-label">Pain point</span>
+      <p>Miscommunication causing tension and disputes on the court.</p>
+    </div>
+  </div>
+
+  <div class="journey-stage" data-mood="negative">
+    <span class="journey-stage-num">04</span>
+    <h4 class="journey-stage-title">Outburst</h4>
+    <p class="journey-action">Smashes his racket. Gets a penalty for unsportsmanlike behaviour.</p>
+    <div class="journey-emotion">
+      <span class="journey-dot"></span>
+      <span class="journey-mood">Frustrated</span>
+    </div>
+    <div class="journey-block">
+      <span class="journey-label">Pain point</span>
+      <p>Emotional and mental strain compounded by language barriers — no easy way to explain himself afterwards.</p>
+    </div>
+  </div>
+
+  <div class="journey-stage" data-mood="negative">
+    <span class="journey-stage-num">05</span>
+    <h4 class="journey-stage-title">Aftermath</h4>
+    <p class="journey-action">Returns to the hotel. Unable to sleep.</p>
+    <div class="journey-emotion">
+      <span class="journey-dot"></span>
+      <span class="journey-mood">Annoyed</span>
+    </div>
+    <div class="journey-block">
+      <span class="journey-label">Opportunity</span>
+      <p>Offer ambient connection in the moments where reaching out feels too heavy — a tap, not a conversation.</p>
+    </div>
+  </div>
+</div>
+
+The two opportunities at the ends of the arc — arrival and aftermath — gave us the phone's purpose. The middle three made the case for the watch.
+
+<SectionOpener n="06" eyebrow="The concept" title="A paired product — phone for depth, watch for presence." />
+
+<p class="lead">Most social products narrow expression to a single mode. We widened it on purpose.</p>
+
+<div class="concept-pair">
+  <div>
+    <span class="concept-pair-eyebrow">Phone · Depth</span>
+    <h3 class="concept-pair-title">Where connection gets committed to.</h3>
+    <p>Activity browsing, group chats with built-in translation, profile depth. The phone is where athletes commit to seeing each other again — the surface for the longer contact.</p>
+  </div>
+  <div>
+    <span class="concept-pair-eyebrow">Watch · Presence</span>
+    <h3 class="concept-pair-title">Where presence is enough.</h3>
+    <p>Instant friend requests when two athletes tap watches, low-effort replies, a single-tap response that says <em>I saw you</em> without expecting one back. For the moments athletes are too tired or too focused to type.</p>
+  </div>
+</div>
+
+<p class="concept-footnote"><span class="concept-footnote-label">How we got here —</span><span class="concept-footnote-emph">SCAMPER</span> on the top two ideas from our concept matrix, combining a watch-first omni-channel concept with the structured social features of a mobile-first one.</p>
+
+<SectionOpener n="07" eyebrow="Process" title="From sketch to screen." />
+
+Three rounds of fidelity, each one closer to the final product. Each round was tested before we committed to the next.
+
+<div class="process-stack">
+  <figure class="process-step">
+    <div class="process-step-meta">
+      <span class="process-step-num">01</span>
+      <h4 class="process-step-title">Sketches</h4>
+      <p>Cheap to throw away. We sketched the home, chats, and activities flows in parallel before agreeing on the structure.</p>
+    </div>
+    <div class="process-step-img process-step-img--row">
+      <Image src={sketch1} alt="Pencil-and-paper sketch of the home flow." widths={[400, 800, 1200]} sizes="(min-width: 768px) 240px, 90vw" loading="lazy" />
+      <Image src={sketch2} alt="Pencil-and-paper sketches of three phone screens — home, chats, and activities flows." widths={[400, 800, 1200]} sizes="(min-width: 768px) 240px, 90vw" loading="lazy" />
+      <Image src={sketch3} alt="Pencil-and-paper sketch of the activities and discover flows." widths={[400, 800, 1200]} sizes="(min-width: 768px) 240px, 90vw" loading="lazy" />
+    </div>
+  </figure>
+
+  <figure class="process-step">
+    <div class="process-step-meta">
+      <span class="process-step-num">02</span>
+      <h4 class="process-step-title">Low-fidelity wireframes</h4>
+      <p>Greyscale, no type hierarchy yet — the round where we proved the screens existed in the right order and the navigation held up.</p>
+    </div>
+    <div class="process-step-img">
+      <Image src={lowfi} alt="Grid of greyscale low-fidelity wireframes covering welcome, profile, activities, chats, notifications, friend requests, and discover screens." widths={[600, 1200, 1800]} sizes="(min-width: 768px) 760px, 90vw" loading="lazy" />
+    </div>
+  </figure>
+
+  <figure class="process-step">
+    <div class="process-step-meta">
+      <span class="process-step-num">03</span>
+      <h4 class="process-step-title">Mid-fidelity</h4>
+      <p>First pass at colour, type, and component density. The phone and watch were designed alongside each other but to different rhythms.</p>
+    </div>
+    <div class="process-step-img process-step-img--row">
+      <Image src={midfi} alt="Mid-fidelity phone screens in colour — onboarding, activities, chats, friend requests, and discover." widths={[500, 1000, 1500]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />
+      <Image src={midfiWatch} alt="Mid-fidelity watch screens — loading, connect, hold nearby to share, friend request, notifications, activities, and members." widths={[500, 1000, 1500]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />
+    </div>
+  </figure>
+</div>
+
+<SectionOpener n="08" eyebrow="Phone" title="Where connection gets committed to." />
+
+<div class="phone-features">
+  <article class="phone-feature">
+    <span class="phone-feature-num">Feature 01</span>
+    <h3 class="phone-feature-title">Home</h3>
+    <p>The home screen inverts how social feeds usually rank attention — no broadcasts, no follower counts. The feed surfaces activities the athlete has already joined and friend requests waiting for action.</p>
+    <div class="phone-feature-frame">
+      <Image src={phone1} alt="Ollie home — For you feed with upcoming activities and friend requests." widths={[240, 480, 720]} sizes="(min-width: 768px) 280px, 70vw" loading="lazy" />
+    </div>
+  </article>
+  <article class="phone-feature">
+    <span class="phone-feature-num">Feature 02</span>
+    <h3 class="phone-feature-title">Activities</h3>
+    <p>Athletes create or join low-stakes events with one tap. Sport is optional — the tested list included a pastry class and a tango class alongside the volleyball.</p>
+    <div class="phone-feature-frame">
+      <Image src={phone3} alt="Ollie activities — list of joinable activities including beach volleyball, tango class, breakdancing, pastry class." widths={[240, 480, 720]} sizes="(min-width: 768px) 280px, 70vw" loading="lazy" />
+    </div>
+  </article>
+</div>
+
+<SectionOpener n="09" eyebrow="Watch" title="Where presence is enough." />
+
+<p class="lead">Three flows, no more. The watch never tries to be the phone — only the interactions that genuinely belong on a wrist.</p>
+
+<div class="watch-features">
+  <article class="watch-feature">
+    <span class="watch-feature-num">Feature 01</span>
+    <h3 class="watch-feature-title">Hold nearby</h3>
+    <p>Two athletes tap watches and exchange contact details — no usernames, no QR codes, no typing.</p>
+    <div class="watch-feature-frame">
+      <Image src={watch2} alt="Watch — hold nearby to share, with two watch icons exchanging." widths={[180, 360, 540]} sizes="(min-width: 768px) 180px, 60vw" loading="lazy" />
+    </div>
+  </article>
+  <article class="watch-feature">
+    <span class="watch-feature-num">Feature 02</span>
+    <h3 class="watch-feature-title">Friend request</h3>
+    <p>Confirmed on the wrist, while both athletes are still in the same room — closing the loop in seconds.</p>
+    <div class="watch-feature-frame">
+      <Image src={watch1} alt="Watch — Bob Shelly wants to be your friend, with cross and tick buttons." widths={[180, 360, 540]} sizes="(min-width: 768px) 180px, 60vw" loading="lazy" />
+    </div>
+  </article>
+  <article class="watch-feature">
+    <span class="watch-feature-num">Feature 03</span>
+    <h3 class="watch-feature-title">Quick reply</h3>
+    <p>One-tap responses keep short exchanges on the wrist. Anything longer kicks the conversation back to the phone.</p>
+    <div class="watch-feature-frame">
+      <Image src={watch3} alt="Watch — incoming notification from Bob: Hey, how r u? with Reply and Dismiss buttons." widths={[180, 360, 540]} sizes="(min-width: 768px) 180px, 60vw" loading="lazy" />
+    </div>
+  </article>
+</div>
+
+<SectionOpener n="10" eyebrow="Testing" title="Four rounds of users. SUS climbed each pass." />
+
+<div class="split-2col">
+  <div class="sus-chart">
+    <div class="sus-chart-bars" role="img" aria-label="System Usability Scale scores across four testing rounds.">
+      <div class="sus-bar">
+        <div class="sus-bar-fill" style="height: 56%;">78.5</div>
+      </div>
+      <div class="sus-bar">
+        <div class="sus-bar-fill" style="height: 82%;">82</div>
+      </div>
+      <div class="sus-bar">
+        <div class="sus-bar-fill" style="height: 85%;">85</div>
+      </div>
+      <div class="sus-bar sus-bar--accent">
+        <div class="sus-bar-fill" style="height: 87%;">87</div>
+      </div>
+    </div>
+    <div class="sus-chart-labels">
+      <span>Low-fi</span>
+      <span>Mid-fi</span>
+      <span>Hi-fi 1</span>
+      <span>Hi-fi 2</span>
+    </div>
+  </div>
+  <div class="split-prose">
+    <p>Four rounds across the build: paper, mid-fi, and two passes on the interactive high-fidelity prototype. Each used Think Aloud, a SUS survey, and a freestyle interview, with a heuristic evaluation before the user rounds began.</p>
+    <p>The biggest gain came between Hi-fi 1 and Hi-fi 2. Real interactions exposed friction the static prototype had hidden — we hadn't designed onboarding, and users were lost in the first thirty seconds. We built one for Hi-fi 2 and the score climbed again.</p>
+  </div>
+</div>
+
+<SectionOpener n="11" eyebrow="Reflections" title="What stayed with us." />
+
+<div class="reflections">
+  <div class="reflection">
+    <span class="reflection-label">What worked</span>
+    <p>Designing for *rest* — for the spaces between events, between cultures, between conversations — turned out to be a different discipline from designing for engagement. Most social products optimise for time-in-app. The Olympic athletes we spoke with were already time-poor; what they wanted was a product that disappeared as soon as it had done its job.</p>
+  </div>
+
+  <div class="reflection">
+    <span class="reflection-label">What we'd change</span>
+    <p>We didn't test with actual Olympic athletes; we recruited around their proxies — university-level competitive athletes across an age range mirroring the Olympic spread. Our colour system leans Swedish blue-and-yellow more by accident than choice, something a couple of testers pointed out and we couldn't unsee. And the watch-tap interaction, the part we were proudest of, is the part we have the least real-world data on.</p>
+  </div>
+
+  <div class="reflection">
+    <span class="reflection-label">What we learned</span>
+    <p>We had to learn to subtract before adding. The final prototype isn't loud, and that's precisely the point.</p>
+  </div>
+</div>
+
+<FigmaEmbed url="https://embed.figma.com/proto/rnoae3OyPx01KbJhTSBTx8/Tal-Cohen---Ollie-App---Interaction-Design?node-id=0-1&embed-host=share" />

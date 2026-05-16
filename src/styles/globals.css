@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Self-hosted: Switzer (regular, medium, bold, italic). */
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Self-hosted mono: JetBrains Mono. */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --paper: #F4F1EA;
+  --paper-dark: #E6E2D8;
+  --ink: #0B0B0E;
+  --ink-soft: #2A2A30;
+  --ink-mute: #6B6B72;
+  --clay: #C9633F;
+  --sage: #B7C2B0;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'><g transform='rotate(-30 18 18)' stroke-linejoin='round' stroke-linecap='round'><ellipse cx='18' cy='12' rx='10' ry='12' fill='black' stroke='black' stroke-width='2.5'/><path d='M15.5 20 L20.5 20 L21.5 32 Q21.5 34 19 34 L17 34 Q14.5 34 14.5 32 Z' fill='black' stroke='black' stroke-width='2.5'/><ellipse cx='18' cy='12' rx='10' ry='12' fill='%23C9633F'/><path d='M15.5 20 L20.5 20 L21.5 32 Q21.5 34 19 34 L17 34 Q14.5 34 14.5 32 Z' fill='%23C9633F'/></g></svg>") 15 13, auto;
+  }
+  *, *::before, *::after {
+    cursor: inherit;
+  }
+  a, button, [role='button'], summary, label, input, textarea, select {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'><g transform='rotate(-30 18 18)' stroke-linejoin='round' stroke-linecap='round'><ellipse cx='18' cy='12' rx='10' ry='12' fill='black' stroke='black' stroke-width='2.5'/><path d='M15.5 20 L20.5 20 L21.5 32 Q21.5 34 19 34 L17 34 Q14.5 34 14.5 32 Z' fill='black' stroke='black' stroke-width='2.5'/><ellipse cx='18' cy='12' rx='10' ry='12' fill='%23C9633F'/><path d='M15.5 20 L20.5 20 L21.5 32 Q21.5 34 19 34 L17 34 Q14.5 34 14.5 32 Z' fill='%23C9633F'/></g></svg>") 15 13, pointer;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+}
+
+@layer utilities {
+  .font-mono-tight { letter-spacing: 0; }
+  .text-mute { color: var(--ink-mute); }
+  .border-ink { border-color: var(--ink); }
+  .border-ink-mute { border-color: var(--ink-mute); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

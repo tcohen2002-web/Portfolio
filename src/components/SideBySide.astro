@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  side?: 'left' | 'right';
+}
+
+const { src, alt, caption, side = 'right' } = Astro.props;
+---
+
+<div class="side-by-side" data-side={side}>
+  <div class="side-by-side-text">
+    <slot />
+  </div>
+  <figure class="side-by-side-figure">
+    <div class="side-by-side-frame">
+      <Image
+        src={src}
+        alt={alt}
+        widths={[320, 640, 960]}
+        sizes="(min-width: 768px) 420px, 80vw"
+        class="side-by-side-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    {caption && (
+      <figcaption class="side-by-side-caption">
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+</div>
+
+<style>
+  .side-by-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  @media (min-width: 768px) {
+    .side-by-side {
+      flex-direction: row;
+      align-items: center;
+      gap: 3.5rem;
+    }
+  }
+  .side-by-side-text {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .side-by-side-figure {
+    flex: 1 1 0;
+    margin: 0;
+    min-width: 0;
+  }
+  .side-by-side[data-side="left"] .side-by-side-figure { order: 1; }
+  .side-by-side[data-side="left"] .side-by-side-text { order: 2; }
+  .side-by-side[data-side="right"] .side-by-side-text { order: 1; }
+  .side-by-side[data-side="right"] .side-by-side-figure { order: 2; }
+
+  .side-by-side-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .side-by-side-img {
+    max-width: 100%;
+    max-height: 460px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .side-by-side-caption {
+    margin: 1rem 0 0;
+    max-width: 36ch;
+    font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--mute, #6B6B70);
+  }
+  .side-by-side[data-side="left"] .side-by-side-caption { margin-left: auto; margin-right: 0; text-align: right; }
+  .side-by-side[data-side="right"] .side-by-side-caption { margin-left: 0; margin-right: auto; text-align: left; }
+</style>

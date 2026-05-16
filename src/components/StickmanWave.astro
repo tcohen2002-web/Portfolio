@@ -1,0 +1,190 @@
+---
+---
+
+<figure class="stickman-wave" aria-label="Stickman holding a tennis ball — waves on hover">
+  <svg
+    data-stickman-wave
+    viewBox="0 0 200 320"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    role="img"
+    class="stickman-wave__svg"
+  >
+    <title>Tennis stickman</title>
+
+    <!-- head + face -->
+    <g class="sw-head">
+      <path d="M82 36 L78 24" />
+      <path d="M92 33 L92 20" />
+      <path d="M102 34 L106 22" />
+      <path d="M112 38 L118 28" />
+
+      <circle cx="95" cy="55" r="22" />
+      <circle cx="88" cy="53" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="103" cy="53" r="1.6" fill="currentColor" stroke="none" />
+      <path d="M84 48 L92 46" />
+      <path d="M99 46 L107 48" />
+      <path d="M85 62 Q95 72 105 62" />
+    </g>
+
+    <!-- spine -->
+    <path d="M95 78 L95 205" />
+
+    <!-- triangular tunic -->
+    <path d="M95 82 L88 105 L95 180 L102 105 Z" fill="currentColor" />
+
+    <!-- LEFT arm holding racquet (static) -->
+    <path d="M95 100 L55 135" />
+    <path d="M55 135 L42 152" />
+    <ellipse cx="32" cy="168" rx="18" ry="23" transform="rotate(-22 32 168)" />
+    <path d="M20 152 L42 184" />
+    <path d="M14 162 L34 188" />
+    <path d="M30 146 L52 172" />
+    <path d="M42 150 L20 178" />
+
+    <!-- RIGHT arm + open waving hand (5 fingers) — rotates around shoulder (95, 100) -->
+    <g class="sw-arm">
+      <!-- forearm into wrist -->
+      <path d="M95 100 L140 60 L150 38" />
+
+      <!-- wrist crease -->
+      <path d="M147 38 Q153 40 159 36" stroke-width="2" />
+
+      <!-- palm -->
+      <ellipse cx="153" cy="29" rx="6.5" ry="5" />
+
+      <!-- thumb (inner side) -->
+      <path d="M147 30 Q141 26 142 20" stroke-width="2.4" />
+
+      <!-- index -->
+      <path d="M149 24 L147 11" stroke-width="2.4" />
+      <!-- middle (tallest) -->
+      <path d="M152 23 L151 7" stroke-width="2.4" />
+      <!-- ring -->
+      <path d="M156 23 L158 9" stroke-width="2.4" />
+      <!-- pinky (shortest) -->
+      <path d="M159 25 L162 15" stroke-width="2.4" />
+
+      <!-- subtle knuckle marks -->
+      <circle cx="149" cy="24" r="0.7" fill="currentColor" stroke="none" />
+      <circle cx="152" cy="23.5" r="0.7" fill="currentColor" stroke="none" />
+      <circle cx="156" cy="23.5" r="0.7" fill="currentColor" stroke="none" />
+      <circle cx="159" cy="25" r="0.7" fill="currentColor" stroke="none" />
+    </g>
+
+    <!-- legs -->
+    <path d="M95 205 L72 285" />
+    <path d="M95 205 L122 290" />
+    <ellipse cx="68" cy="288" rx="7" ry="3" />
+    <ellipse cx="128" cy="292" rx="7" ry="3" />
+
+    <!-- tennis ball resting on the ground, beside the left leg, beneath the racquet -->
+    <g transform="translate(24 271) scale(0.625)">
+      <circle cx="20" cy="20" r="16" stroke-width="4.2" />
+      <path d="M5.5 13 Q20 22 34.5 13" stroke-width="4.2" fill="none" />
+      <path d="M5.5 27 Q20 18 34.5 27" stroke-width="4.2" fill="none" />
+    </g>
+  </svg>
+</figure>
+
+<style>
+  .stickman-wave {
+    margin: 0 0 0 2.5rem;
+    max-width: 320px;
+  }
+  .stickman-wave__svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink, #0B0B0E);
+    cursor: pointer;
+  }
+
+  .sw-arm {
+    transform-origin: 95px 100px;
+    transform-box: view-box;
+  }
+  .sw-head {
+    transform-origin: 95px 78px;
+    transform-box: view-box;
+  }
+
+  .stickman-wave__svg.is-waving .sw-arm {
+    animation: swArmWave 1.6s cubic-bezier(0.42, 0, 0.58, 1) both;
+  }
+  .stickman-wave__svg.is-waving .sw-head {
+    animation: swHeadTilt 1.6s cubic-bezier(0.42, 0, 0.58, 1) both;
+  }
+
+  @keyframes swArmWave {
+    0%   { transform: rotate(0deg); }
+    10%  { transform: rotate(-14deg); }
+    28%  { transform: rotate(26deg); }
+    46%  { transform: rotate(-10deg); }
+    64%  { transform: rotate(22deg); }
+    82%  { transform: rotate(-6deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes swHeadTilt {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(-3deg); }
+    55%  { transform: rotate(3deg); }
+    85%  { transform: rotate(-1.5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stickman-wave__svg.is-waving .sw-arm,
+    .stickman-wave__svg.is-waving .sw-head {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function initStickmanWave() {
+    const svg = document.querySelector<SVGElement>('[data-stickman-wave]');
+    if (!svg) return;
+
+    let isWaving = false;
+    const triggerWave = () => {
+      if (isWaving) return;
+      isWaving = true;
+      svg.classList.remove('is-waving');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          svg.classList.add('is-waving');
+        });
+      });
+      window.setTimeout(() => {
+        isWaving = false;
+      }, 1700);
+    };
+
+    svg.addEventListener('mouseenter', triggerWave);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            triggerWave();
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(svg);
+
+    document.addEventListener(
+      'astro:before-swap',
+      () => observer.disconnect(),
+      { once: true }
+    );
+  }
+
+  document.addEventListener('astro:page-load', initStickmanWave);
+</script>

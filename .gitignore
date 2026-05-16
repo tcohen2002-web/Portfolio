@@ -1,0 +1,33 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env
+.env
+.env.production
+.env.local
+
+# editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# astro
+.astro/
+
+# raw source PDFs (kept local; not deployed)
+Ollie/Ollie.pdf
+Mira/Mira1.pdf
+Mira/Mira2.pdf
+Mates&Matches/mates&matches.pdf

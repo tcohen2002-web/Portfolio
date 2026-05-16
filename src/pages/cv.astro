@@ -1,0 +1,133 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="View CV" hideFooter>
+  <section class="mx-auto max-w-[1600px] px-6 pt-44 md:px-10 md:pt-56">
+    <h1 class="max-w-[20ch] font-display text-3xl leading-[1.1] tracking-[-0.02em] md:text-5xl">
+      This page needs a password.
+    </h1>
+
+    <p class="mt-10 max-w-xl text-base text-ink/70 md:mt-12 md:text-lg">
+      I'm sure I'd be more than happy to share it with you;
+      <a href="mailto:t.cohen2002@gmail.com" class="underline underline-offset-4 hover:text-ink">just reach out</a>.
+    </p>
+
+    <form data-cv-form class="cv-form mt-10 md:mt-12">
+      <div class="cv-row">
+        <input
+          data-cv-input
+          type="password"
+          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Enter password"
+          aria-label="Password"
+          class="cv-input"
+        />
+        <button type="submit" class="cv-unlock">
+          <span>Unlock</span>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="15" height="15" fill="currentColor">
+            <path d="M13.5 3a3.5 3.5 0 0 0-3.39 4.39L3 14.5V17h2.5l.5-.5V15h1.5l.5-.5V13h1.5l1.11-1.11A3.5 3.5 0 1 0 13.5 3Zm.75 4a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+          </svg>
+        </button>
+      </div>
+      <p data-cv-error class="cv-error" hidden>Incorrect password</p>
+    </form>
+
+    <a href="/" class="cv-home">Go home</a>
+  </section>
+
+  <style>
+    .cv-form { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cv-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+
+    .cv-input {
+      box-sizing: border-box;
+      height: 46px;
+      width: 360px;
+      max-width: 100%;
+      padding: 0 1.1rem;
+      border: 1.5px solid rgba(11, 11, 14, 0.3);
+      border-radius: 12px;
+      background: var(--paper, #F4F1EA);
+      color: var(--ink, #0B0B0E);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 180ms ease;
+    }
+    .cv-input::placeholder { color: rgba(11, 11, 14, 0.4); }
+    .cv-input:focus { border-color: var(--ink, #0B0B0E); }
+
+    .cv-unlock {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      height: 46px;
+      padding: 0 1.25rem;
+      border: 1.5px solid var(--ink, #0B0B0E);
+      border-radius: 12px;
+      background: var(--ink, #0B0B0E);
+      color: var(--paper, #F4F1EA);
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 180ms ease;
+    }
+    .cv-unlock:hover { opacity: 0.85; }
+
+    .cv-error {
+      margin: 0;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C9633F;
+    }
+    .cv-error[hidden] { display: none; }
+
+    .cv-home {
+      display: inline-flex;
+      align-items: center;
+      height: 46px;
+      margin-top: 3rem;
+      padding: 0 1.1rem;
+      border: 1.5px solid rgba(11, 11, 14, 0.7);
+      border-radius: 12px;
+      background: var(--paper, #F4F1EA);
+      color: var(--ink, #0B0B0E);
+      font-size: 15px;
+      transition: border-color 180ms ease;
+    }
+    .cv-home:hover { border-color: var(--ink, #0B0B0E); }
+
+    @media (min-width: 768px) {
+      .cv-home { margin-top: 4rem; }
+    }
+  </style>
+
+  <script>
+    function initCvPage() {
+      const form = document.querySelector<HTMLFormElement>('[data-cv-form]');
+      const input = document.querySelector<HTMLInputElement>('[data-cv-input]');
+      const error = document.querySelector<HTMLElement>('[data-cv-error]');
+      if (!form || !input || !error) return;
+
+      const PASSWORD = '11';
+      const CV_URL = '/cv/tal-cohen-cv.pdf';
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (input.value.trim() === PASSWORD) {
+          window.location.href = CV_URL;
+        } else {
+          error.classList.remove('hidden');
+          input.select();
+        }
+      });
+    }
+
+    document.addEventListener('astro:page-load', initCvPage);
+  </script>
+</BaseLayout>

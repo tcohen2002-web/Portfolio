@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://talcohen.example/sitemap-index.xml

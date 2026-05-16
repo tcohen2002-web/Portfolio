@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width?: 'column' | 'wide' | 'full';
+  caption?: string;
+  rounded?: boolean;
+}
+
+const { src, alt, width = 'column', caption, rounded = false } = Astro.props;
+
+const maxWidthPx = {
+  column: 380,
+  wide: 560,
+  full: 760,
+};
+
+const maxHeightVh = {
+  column: 60,
+  wide: 68,
+  full: 75,
+};
+
+const servedWidths = {
+  column: [400, 800],
+  wide: [560, 1120],
+  full: [760, 1520],
+};
+
+const sizesAttr = {
+  column: '380px',
+  wide: '560px',
+  full: '760px',
+};
+---
+
+<figure class="my-16 md:my-20">
+  <Image
+    src={src}
+    alt={alt}
+    widths={servedWidths[width]}
+    sizes={sizesAttr[width]}
+    class:list={['mx-auto block', rounded && 'rounded-md']}
+    style={`width: auto; height: auto; max-width: min(${maxWidthPx[width]}px, 100%); max-height: ${maxHeightVh[width]}vh;`}
+    loading="lazy"
+    decoding="async"
+  />
+  {caption && (
+    <figcaption class="mx-auto mt-4 text-center font-mono text-[12px] uppercase tracking-[0.18em] text-mute"
+                style={`max-width: ${maxWidthPx[width]}px;`}>
+      {caption}
+    </figcaption>
+  )}
+</figure>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  n: string;
+  eyebrow: string;
+  title: string;
+  id?: string;
+}
+
+const { n, eyebrow, title, id } = Astro.props;
+const anchor = id ?? `section-${n}`;
+---
+
+<section id={anchor} class="section-opener scroll-mt-24">
+  <div class="section-opener-content">
+    <div class="section-opener-meta">
+      <span>{n}</span>
+      <span aria-hidden="true">·</span>
+      <span>{eyebrow}</span>
+    </div>
+    <h2 class="section-opener-title">{title}</h2>
+  </div>
+</section>
+
+<style>
+  .section-opener-content {
+    padding-top: 0;
+  }
+  .section-opener-meta {
+    display: flex;
+    gap: 0.7rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent, #C9633F);
+    margin-bottom: 1.1rem;
+  }
+  .section-opener-title {
+    font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    color: var(--ink, #0B0B0E);
+    margin: 0;
+    font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    max-width: 100%;
+  }
+</style>

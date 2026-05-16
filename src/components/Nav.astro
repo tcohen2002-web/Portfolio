@@ -1,0 +1,165 @@
+---
+const { pathname } = Astro.url;
+const isHome = pathname === '/';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/#work', label: 'Works' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<nav
+  id="site-nav"
+  aria-label="Primary"
+  class="fixed inset-x-0 top-0 z-50 bg-paper"
+>
+  <div class="relative mx-auto max-w-[1600px] px-6 py-5 md:px-10 md:py-0">
+    {isHome ? (
+      <a
+        href="/"
+        aria-label="Tal Cohen — Home"
+        data-hero-link
+        class="absolute left-6 md:left-10 z-10 block select-none text-ink"
+        style="top: var(--hero-top, 18vh);"
+      >
+        <span
+          data-hero-stack
+          class="relative inline-block font-sans font-medium uppercase leading-[0.85] tracking-[-0.04em]"
+          style="font-size: var(--hero-font-size, 22vw); will-change: font-size;"
+        >
+          <span data-tal class="inline-block">
+            <span class="letter" style="--c:#8478C4">T</span><span class="letter" style="--c:#7A9670">a</span><span class="letter" style="--c:#C4A82E">l</span>
+          </span>
+          <span data-cohen class="block" style="will-change: transform;">
+            <span class="letter" style="--c:#C9633F">C</span><span class="letter" style="--c:#8478C4">o</span><span class="letter" style="--c:#7A9670">h</span><span class="letter" style="--c:#C4A82E">e</span><span class="letter" style="--c:#C9633F">n</span>
+          </span>
+        </span>
+      </a>
+    ) : (
+      <a href="/" aria-label="Tal Cohen — Home" class="absolute left-6 md:left-10 top-5 md:top-5 z-10 block select-none whitespace-nowrap font-sans font-medium uppercase leading-[0.85] tracking-[-0.04em] text-ink hover:opacity-60 text-[15px] md:text-[28px]">
+        Tal Cohen
+      </a>
+    )}
+
+    <ul class="flex items-center justify-end gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink md:gap-6 md:py-5 md:text-[12px]">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class:list={[
+              'transition-opacity hover:opacity-60',
+              pathname === l.href && 'opacity-50',
+            ]}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  :root { --hero-top: 20px; }
+  @media (max-width: 767px) {
+    :root { --hero-top: 18vh; }
+  }
+</style>
+
+<style>
+  .letter { transition: color 280ms ease; }
+  .letter:hover { color: var(--c); }
+</style>
+
+<script>
+  function initHero() {
+    const heroLink = document.querySelector<HTMLElement>('[data-hero-link]');
+    const heroStack = document.querySelector<HTMLElement>('[data-hero-stack]');
+    const talEl = document.querySelector<HTMLElement>('[data-tal]');
+    const cohenEl = document.querySelector<HTMLElement>('[data-cohen]');
+    const root = document.documentElement;
+
+    if (!heroLink || !heroStack || !talEl || !cohenEl) {
+      root.style.removeProperty('--hero-font-size');
+      root.style.removeProperty('--hero-top');
+      return;
+    }
+
+    let targetPx = 28;
+    let startPx = 0;
+    let isMobile = false;
+    let startTopPx = 0;
+    let endTopPx = 20;
+    let ticking = false;
+    const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
+    const smooth = (t: number) => t * t * (3 - 2 * t);
+
+    const measure = () => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      isMobile = vw < 768;
+      const sizeVw = isMobile ? 22 : 18;
+      startPx = (sizeVw / 100) * vw;
+      targetPx = isMobile ? 15 : 28;
+      startTopPx = isMobile ? vh * 0.18 : 20;
+      endTopPx = isMobile ? 22 : 20;
+    };
+
+    const update = () => {
+      const vh = window.innerHeight;
+      const range = vh * 0.45;
+      const p = clamp(window.scrollY / range, 0, 1);
+
+      const shrinkP = smooth(clamp(p / 0.7, 0, 1));
+      const size = startPx + shrinkP * (targetPx - startPx);
+      root.style.setProperty('--hero-font-size', `${size}px`);
+
+      const top = startTopPx + shrinkP * (endTopPx - startTopPx);
+      root.style.setProperty('--hero-top', `${top}px`);
+
+      const morphP = smooth(clamp((p - 0.55) / 0.45, 0, 1));
+      const talWidth = talEl.getBoundingClientRect().width;
+      const gap = size * 0.22;
+      const tx = morphP * (talWidth + gap);
+      const ty = -morphP * size * 0.85;
+      cohenEl.style.transform = `translate(${tx}px, ${ty}px)`;
+    };
+
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    document.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            update();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true, signal }
+    );
+    window.addEventListener(
+      'resize',
+      () => {
+        measure();
+        update();
+      },
+      { passive: true, signal }
+    );
+    document.addEventListener(
+      'astro:before-swap',
+      () => controller.abort(),
+      { once: true }
+    );
+
+    measure();
+    update();
+  }
+
+  document.addEventListener('astro:page-load', initHero);
+</script>

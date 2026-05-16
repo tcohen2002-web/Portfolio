@@ -1,0 +1,52 @@
+---
+interface Props {
+  url: string;
+  title?: string;
+  ratio?: string;
+  label?: string;
+  openUrl?: string;
+}
+
+const { url, openUrl } = Astro.props;
+
+const externalUrl = openUrl ?? url.replace('embed.figma.com', 'www.figma.com');
+---
+
+<div class="figma-button-wrap">
+  <a
+    href={externalUrl}
+    target="_blank"
+    rel="noopener"
+    class="figma-button"
+  >
+    Open in Figma <span aria-hidden="true">↗</span>
+  </a>
+</div>
+
+<style>
+  .figma-button-wrap {
+    display: flex;
+  }
+  .figma-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    padding: 0.95rem 1.6rem;
+    border: 1.5px solid var(--ink, #0B0B0E);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink, #0B0B0E);
+    background-color: transparent;
+    text-decoration: none;
+    transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
+  }
+  .figma-button:hover,
+  .figma-button:focus-visible {
+    background-color: var(--ink, #0B0B0E);
+    color: var(--paper, #F4F1EA);
+    transform: translateY(-1px);
+  }
+</style>

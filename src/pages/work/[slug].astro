@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import CaseStudyLayout from '~/layouts/CaseStudyLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work', ({ data }) => !data.draft);
+  const sorted = [...entries].sort((a, b) => a.data.n.localeCompare(b.data.n));
+
+  return sorted.map((entry, i) => {
+    const next = sorted[(i + 1) % sorted.length];
+    const hasNext = next && next.slug !== entry.slug;
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        nextProject: hasNext
+          ? {
+              slug: next.slug,
+              n: next.data.n,
+              title: next.data.title,
+              accent: next.data.accent,
+              tagline: next.data.tagline,
+            }
+          : undefined,
+      },
+    };
+  });
+}
+
+const { entry, nextProject } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+---
+
+<CaseStudyLayout
+  n={d.n}
+  title={d.title}
+  tagline={d.tagline}
+  description={d.description}
+  year={d.year}
+  duration={d.duration}
+  role={d.role}
+  team={d.team}
+  tools={d.tools}
+  outcome={d.outcome}
+  cover={d.cover}
+  coverAlt={d.coverAlt}
+  coverFullBleed={d.coverFullBleed}
+  accent={d.accent}
+  titleColor={d.titleColor}
+  figmaUrl={d.figmaUrl}
+  nextProject={nextProject}
+>
+  <Content />
+</CaseStudyLayout>

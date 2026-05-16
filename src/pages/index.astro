@@ -1,0 +1,438 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import StickmanWave from '~/components/StickmanWave.astro';
+
+const projects = [
+  {
+    slug: 'ollie',
+    n: '01',
+    title: 'Ollie',
+    year: '2024',
+    tagline: 'A multimodal social network connecting Olympic athletes across cultures.',
+    hover: '#DCD7EC',
+  },
+  {
+    slug: 'mira',
+    n: '02',
+    title: 'Mira',
+    year: '2025',
+    tagline: 'An interactive plant — a gentle emotional mirror for young adults and parents living apart.',
+    hover: '#D2DFC8',
+  },
+  {
+    slug: 'vamos-bites',
+    n: '03',
+    title: 'Vamos Bites',
+    year: '2025',
+    tagline: "A compact tribute to Rafael Nadal — chocolate, ritual, and Spanish identity in a clay-court timber box.",
+    hover: '#EAC9B0',
+  },
+  {
+    slug: 'mates-and-matches',
+    n: '04',
+    title: 'Mates & Matches',
+    year: '2026',
+    tagline: 'An inclusive platform helping international students in Sydney find beginner-friendly social sports.',
+    hover: '#EFE7BD',
+    comingSoon: true,
+  },
+];
+---
+
+<BaseLayout
+  title="Tal Cohen"
+  description="UX/UI designer based in Sydney. Four research-led case studies, all graded HD."
+>
+  <section class="relative mx-auto flex min-h-[100svh] max-w-[1600px] flex-col px-6 pb-16 pt-[88vw] md:px-14 md:pb-10 md:pt-[36vw]">
+    <svg
+      data-stickman
+      aria-hidden="true"
+      viewBox="0 0 200 320"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="absolute right-[10vw] top-[10vw] hidden h-[28vw] w-auto cursor-pointer text-ink md:right-[14vw] md:top-[8vw] md:block"
+    >
+      <circle cx="155" cy="22" r="7" />
+      <path d="M150 36 L154 42" />
+      <path d="M160 36 L156 42" />
+
+      <path d="M82 36 L78 24" />
+      <path d="M92 33 L92 20" />
+      <path d="M102 34 L106 22" />
+      <path d="M112 38 L118 28" />
+
+      <circle cx="95" cy="55" r="22" />
+      <circle cx="88" cy="53" r="1.6" fill="currentColor" />
+      <circle cx="103" cy="53" r="1.6" fill="currentColor" />
+      <path d="M84 46 L92 48" />
+      <path d="M99 48 L107 46" />
+      <path d="M90 64 Q95 67 100 64" />
+
+      <path d="M95 78 L95 205" />
+
+      <path d="M95 82 L88 105 L95 180 L102 105 Z" fill="currentColor" />
+
+      <path d="M95 100 L140 60 L150 32" />
+      <circle cx="150" cy="32" r="4" />
+
+      <path d="M95 100 L55 135" />
+      <path d="M55 135 L42 152" />
+      <ellipse cx="32" cy="168" rx="18" ry="23" transform="rotate(-22 32 168)" />
+      <path d="M20 152 L42 184" />
+      <path d="M14 162 L34 188" />
+      <path d="M30 146 L52 172" />
+      <path d="M42 150 L20 178" />
+
+      <path d="M95 205 L72 285" />
+      <path d="M95 205 L122 290" />
+      <ellipse cx="68" cy="288" rx="7" ry="3" />
+      <ellipse cx="128" cy="292" rx="7" ry="3" />
+    </svg>
+
+    <div
+      data-stickman-bubble
+      aria-hidden="true"
+      class="stickman-bubble absolute hidden md:block"
+    >
+      <span>what happens if<br />you click me?</span>
+    </div>
+
+    <script>
+      function initStickman() {
+        const stickman = document.querySelector<HTMLElement>('[data-stickman]');
+        if (!stickman) return;
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const BALL_SVG = `<svg viewBox="0 0 40 40" fill="none" stroke="#0B0B0E" stroke-width="2.6" stroke-linecap="round" style="width:100%;height:100%;display:block;"><circle cx="20" cy="20" r="16"/><path d="M5.5 13 Q20 22 34.5 13"/><path d="M5.5 27 Q20 18 34.5 27"/></svg>`;
+
+        type Ball = {
+          el: HTMLDivElement;
+          x: number; y: number;
+          vx: number; vy: number;
+          rot: number; rotSpeed: number;
+          r: number;
+          bornAt: number;
+        };
+
+        const balls: Ball[] = [];
+        let running = false;
+        const GRAVITY = 2200;
+        const RESTITUTION = 0.62;
+        const FRICTION = 0.86;
+        const LIFETIME = 3.2;
+        const FADE_START = 2.4;
+
+        const loop = (() => {
+          let last = 0;
+          return (now: number) => {
+            if (!last) last = now;
+            const dt = Math.min((now - last) / 1000, 0.033);
+            last = now;
+            const floor = window.innerHeight - 4;
+            const rightWall = window.innerWidth - 4;
+
+            for (let i = balls.length - 1; i >= 0; i--) {
+              const b = balls[i];
+              b.vy += GRAVITY * dt;
+              b.x += b.vx * dt;
+              b.y += b.vy * dt;
+              b.rot += b.rotSpeed * dt;
+
+              if (b.y + b.r > floor) {
+                b.y = floor - b.r;
+                if (Math.abs(b.vy) < 60) {
+                  b.vy = 0;
+                  b.vx *= 0.92;
+                  b.rotSpeed *= 0.92;
+                } else {
+                  b.vy = -b.vy * RESTITUTION;
+                  b.vx *= FRICTION;
+                  b.rotSpeed *= FRICTION;
+                }
+              }
+              if (b.x - b.r < 4) {
+                b.x = b.r + 4;
+                b.vx = -b.vx * RESTITUTION;
+              } else if (b.x + b.r > rightWall) {
+                b.x = rightWall - b.r;
+                b.vx = -b.vx * RESTITUTION;
+              }
+
+              const age = (now - b.bornAt) / 1000;
+              let opacity = 1;
+              if (age > FADE_START) {
+                opacity = Math.max(0, 1 - (age - FADE_START) / (LIFETIME - FADE_START));
+              }
+              if (age > LIFETIME) {
+                b.el.remove();
+                balls.splice(i, 1);
+                continue;
+              }
+
+              b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) rotate(${b.rot}rad)`;
+              b.el.style.opacity = `${opacity}`;
+            }
+
+            if (balls.length > 0) {
+              requestAnimationFrame(loop);
+            } else {
+              running = false;
+              last = 0;
+            }
+          };
+        })();
+
+        const spawn = () => {
+          if (prefersReduced) return;
+          const rect = stickman.getBoundingClientRect();
+          const cx = rect.left + rect.width * 0.5;
+          const cy = rect.top + rect.height * 0.42;
+          const now = performance.now();
+
+          const COUNT = 22;
+          for (let i = 0; i < COUNT; i++) {
+            const el = document.createElement('div');
+            const size = 28 + Math.random() * 16;
+            el.style.cssText = `position:fixed;left:0;top:0;width:${size}px;height:${size}px;pointer-events:none;z-index:60;will-change:transform,opacity;`;
+            el.innerHTML = BALL_SVG;
+            document.body.appendChild(el);
+
+            const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.35;
+            const speed = 520 + Math.random() * 480;
+            balls.push({
+              el,
+              x: cx + (Math.random() - 0.5) * 20,
+              y: cy + (Math.random() - 0.5) * 20,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              rot: 0,
+              rotSpeed: (Math.random() - 0.5) * 22,
+              r: size / 2,
+              bornAt: now,
+            });
+          }
+
+          if (!running) {
+            running = true;
+            requestAnimationFrame(loop);
+          }
+        };
+
+        const bubble = document.querySelector<HTMLElement>('[data-stickman-bubble]');
+        stickman.addEventListener('click', () => {
+          spawn();
+          if (bubble) bubble.classList.add('is-hidden');
+        });
+        stickman.style.cursor = 'pointer';
+      }
+
+      document.addEventListener('astro:page-load', initStickman);
+    </script>
+
+    <style>
+      .stickman-bubble {
+        right: 8vw;
+        top: 13vw;
+        max-width: 11rem;
+        padding: 0.7rem 0.95rem;
+        background: var(--paper, #F4F1EA);
+        border: 1.5px solid var(--ink, #0B0B0E);
+        border-radius: 20px 20px 20px 6px;
+        font-family: 'Caveat', 'Bradley Hand', 'Segoe Script', 'Marker Felt', cursive;
+        font-size: 1.1rem;
+        line-height: 1.15;
+        color: var(--ink, #0B0B0E);
+        text-align: center;
+        transform: rotate(7deg);
+        animation: bubbleWiggle 3.2s ease-in-out infinite;
+        transition: opacity 250ms ease, transform 250ms ease;
+        pointer-events: none;
+      }
+      .stickman-bubble::after {
+        content: '';
+        position: absolute;
+        left: -9px;
+        bottom: 5px;
+        width: 16px;
+        height: 16px;
+        background: var(--paper, #F4F1EA);
+        border-left: 1.5px solid var(--ink, #0B0B0E);
+        border-bottom: 1.5px solid var(--ink, #0B0B0E);
+        transform: rotate(20deg) skew(-12deg, -12deg);
+        border-bottom-left-radius: 6px;
+      }
+      .stickman-bubble.is-hidden {
+        opacity: 0;
+        transform: rotate(7deg) scale(0.85);
+        pointer-events: none;
+      }
+      @keyframes bubbleWiggle {
+        0%, 100% { transform: rotate(7deg) translateY(0); }
+        50% { transform: rotate(9deg) translateY(-4px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stickman-bubble { animation: none; }
+      }
+
+    </style>
+
+    <div class="mb-10 flex flex-wrap items-center gap-2 md:mb-6">
+      <div class="inline-flex w-fit items-center gap-2 rounded-full border border-ink/20 bg-paper px-3 py-1.5">
+        <span class="relative inline-flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style="background-color: #22C55E;"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full" style="background-color: #22C55E;"></span>
+        </span>
+        <span class="font-mono text-[12px] uppercase tracking-[0.18em]">Open to work</span>
+      </div>
+      <a
+        href="/cv"
+        class="group inline-flex w-fit items-center gap-2 rounded-full border border-ink/20 bg-paper px-3 py-1.5 transition-colors hover:border-ink/60"
+      >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 16 16"
+          width="11"
+          height="11"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-ink"
+        >
+          <path d="M5.2 7.2 V5 a2.8 2.8 0 0 1 5.6 0 V7.2" />
+          <rect x="3.2" y="7.2" width="9.6" height="7" rx="1.2" />
+          <circle cx="8" cy="10.6" r="0.7" fill="currentColor" stroke="none" />
+        </svg>
+        <span class="font-mono text-[12px] uppercase tracking-[0.18em]">View CV</span>
+      </a>
+    </div>
+
+    <p class="max-w-[62ch] font-display text-2xl italic leading-snug text-ink md:text-3xl md:leading-[1.2]">
+      Hi, I'm Tal — UX/UI designer, sticky-note hoarder, and big fan of products that don't need a manual. Let's build something your users will thank you for.
+    </p>
+
+    <div class="mt-12 grid grid-cols-2 items-end gap-6 md:mt-8 md:grid-cols-12">
+      <div class="md:col-span-3">
+        <p class="font-mono text-[12px] uppercase tracking-[0.18em] text-mute">Currently</p>
+        <p class="mt-1 text-sm md:text-base">Design Computing · USYD</p>
+      </div>
+      <div class="md:col-span-3">
+        <p class="font-mono text-[12px] uppercase tracking-[0.18em] text-mute">Based</p>
+        <p class="mt-1 text-sm md:text-base">Sydney · open to relocate</p>
+      </div>
+    </div>
+
+    <div class="flex-1"></div>
+
+    <a
+      href="#work"
+      class="group mt-16 flex w-fit items-center gap-2 self-center font-mono text-[12px] uppercase tracking-[0.18em] text-mute hover:text-ink md:mt-12"
+    >
+      <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-y-0.5">↓</span>
+      <span>Scroll</span>
+    </a>
+
+    <div data-hero-sentinel class="pointer-events-none h-px w-px" aria-hidden="true"></div>
+  </section>
+
+  <section id="work" aria-labelledby="work-heading" class="scroll-mt-16 border-t border-ink/15">
+    <div class="mx-auto max-w-[1600px] px-6 py-6 md:px-14 md:py-8">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+        <h2
+          id="work-heading"
+          class="font-mono text-[12px] uppercase tracking-[0.18em] text-mute"
+        >
+          Selected Work · 2023–2025
+        </h2>
+        <span class="font-mono text-[12px] uppercase tracking-[0.18em] text-mute">
+          {projects.length} projects
+        </span>
+      </div>
+    </div>
+
+    <ul class="border-t border-ink/15">
+      {projects.map((p) => {
+        const inner = (
+          <div class="mx-auto grid max-w-[1600px] grid-cols-12 items-baseline gap-4 px-6 py-6 md:px-14 md:py-8">
+            <span class="col-span-2 font-mono text-[12px] uppercase tracking-[0.18em] text-mute md:col-span-1">
+              {p.n}
+            </span>
+            <span class:list={[
+              'relative col-span-10 font-sans text-4xl font-medium leading-none tracking-[-0.03em] md:col-span-6 md:text-6xl',
+              p.comingSoon && 'text-ink/40',
+            ]}>
+              {p.title}
+              {p.comingSoon && (
+                <span class="absolute right-0 bottom-[calc(100%-1rem)] inline-block rounded-full border border-ink/30 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] leading-none text-ink/60 md:text-[11px]">
+                  Coming soon
+                </span>
+              )}
+            </span>
+            <span class:list={[
+              'col-span-12 text-sm md:col-span-4 md:text-base',
+              p.comingSoon ? 'text-ink/40' : 'text-mute',
+            ]}>
+              {p.tagline}
+            </span>
+            <span class="hidden font-mono text-[12px] uppercase tracking-[0.18em] text-mute md:col-span-1 md:block md:text-right">
+              {p.year}
+            </span>
+          </div>
+        );
+        return (
+          <li class="group border-b border-ink/15">
+            {p.comingSoon ? (
+              <div
+                aria-disabled="true"
+                class="block cursor-not-allowed select-none"
+              >
+                {inner}
+              </div>
+            ) : (
+              <a
+                href={`/work/${p.slug}`}
+                style={`--hover: ${p.hover}`}
+                class="block transition-colors duration-500 hover:bg-[var(--hover)]"
+              >
+                {inner}
+              </a>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section class="mx-auto max-w-[1600px] px-6 py-28 md:px-14 md:py-40">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
+      <div class="md:relative md:col-span-3">
+        <p class="font-mono text-[12px] uppercase tracking-[0.18em] text-mute">
+          About
+        </p>
+        <div class="mt-8 md:absolute md:-bottom-10 md:left-0 md:mt-0">
+          <StickmanWave />
+        </div>
+      </div>
+      <div class="md:col-span-9">
+        <p class="font-display text-2xl leading-tight md:text-4xl">
+          Trained as a designer in Sydney; shaped by years in Mallorca and Charleston.
+          I look for the simplest move that still feels considered.
+        </p>
+        <div class="mt-10 space-y-5 text-base leading-relaxed text-ink/80 md:mt-12 md:text-lg">
+          <p>
+            I'm a UX/UI designer with a global perspective, shaped by years across three continents and a competitive tennis career. The court taught me to read patterns under pressure — I now apply the same instincts to designing intuitive, human-centred digital experiences grounded in research and empathy.
+          </p>
+          <p>
+            I work best in small, close teams. Coaching tennis sharpened how I collaborate — listen first, set a shared rhythm, then iterate. I lean on clear communication, careful research, and front-end coding skills that close the gap between idea and interface.
+          </p>
+          <p>
+            What drives me is building products that feel effortless: inclusive by default, calm at the surface, considered underneath. Technology should connect people across cultures, not get in the way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
