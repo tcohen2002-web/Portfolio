@@ -26,7 +26,7 @@ const links = [
         <span
           data-hero-stack
           class="relative inline-block font-sans font-medium uppercase leading-[0.85] tracking-[-0.04em]"
-          style="font-size: var(--hero-font-size, 22vw); will-change: font-size;"
+          style="font-size: var(--hero-font-size, 22vw); transform-origin: 0 0; will-change: transform;"
         >
           <span data-tal class="inline-block">
             <span class="letter" style="--c:#8478C4">T</span><span class="letter" style="--c:#7A9670">a</span><span class="letter" style="--c:#C4A82E">l</span>
@@ -129,12 +129,12 @@ const links = [
       const p = clamp(animP, 0, 1);
 
       const shrinkP = smooth(clamp(p / 0.55, 0, 1));
-      const size = startPx + shrinkP * (targetPx - startPx);
-      root.style.setProperty('--hero-font-size', `${size}px`);
+      const scaleNow = 1 + shrinkP * (targetPx / startPx - 1);
 
       const riseP = smooth(clamp(p / 0.4, 0, 1));
-      const top = startTopPx + riseP * (endTopPx - startTopPx);
-      root.style.setProperty('--hero-top', `${top}px`);
+      const dy = riseP * (endTopPx - startTopPx);
+
+      heroStack.style.transform = `translate3d(0, ${dy.toFixed(2)}px, 0) scale(${scaleNow.toFixed(4)})`;
 
       if (shrinkP > 0.5) {
         heroStack.setAttribute('data-shrunk', '');
@@ -143,11 +143,9 @@ const links = [
       }
 
       const morphP = smooth(clamp((p - 0.4) / 0.6, 0, 1));
-      const talWidth = size * talRatio;
-      const gap = size * 0.22;
       const liftRatio = isMobile ? 0.8 : 0.86;
-      const tx = Math.round(morphP * (talWidth + gap));
-      const ty = Math.round(-morphP * size * liftRatio);
+      const tx = Math.round(morphP * startPx * (talRatio + 0.22));
+      const ty = Math.round(-morphP * startPx * liftRatio);
       cohenEl.style.transform = `translate(${tx}px, ${ty}px)`;
     };
 
@@ -181,10 +179,12 @@ const links = [
 
     const readScroll = () => {
       const y = window.scrollY;
-      if (state === 'big' && y > 0) {
+      const shrinkAt = isMobile ? 10 : 40;
+      const expandAt = isMobile ? 5 : 20;
+      if (state === 'big' && y > shrinkAt) {
         state = 'shrinking';
         startAnim(1, 700);
-      } else if (state === 'small' && y < 40) {
+      } else if (state === 'small' && y < expandAt) {
         state = 'expanding';
         startAnim(0, 600);
       }
