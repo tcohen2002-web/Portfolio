@@ -130,8 +130,9 @@ const links = [
       const morphP = smooth(clamp((p - 0.55) / 0.45, 0, 1));
       const talWidth = talEl.getBoundingClientRect().width;
       const gap = size * 0.22;
-      const tx = morphP * (talWidth + gap);
-      const ty = -morphP * size * 0.78;
+      const liftRatio = isMobile ? 0.8 : 0.86;
+      const tx = Math.round(morphP * (talWidth + gap));
+      const ty = Math.round(-morphP * size * liftRatio);
       cohenEl.style.transform = `translate(${tx}px, ${ty}px)`;
     };
 
