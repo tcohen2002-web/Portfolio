@@ -168,6 +168,18 @@ const links = [
       { once: true }
     );
 
+    const homeLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href="/"]');
+    homeLinks.forEach((link) => {
+      link.addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        { signal }
+      );
+    });
+
     measure();
     update();
   }
