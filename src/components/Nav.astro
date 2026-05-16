@@ -70,7 +70,9 @@ const links = [
 
 <style>
   .letter { transition: color 280ms ease; }
-  .letter:hover { color: var(--c); }
+  @media (hover: hover) and (min-width: 768px) {
+    .letter:hover { color: var(--c); }
+  }
   [data-hero-stack][data-shrunk] .letter { pointer-events: none; }
   [data-hero-stack][data-shrunk] .letter:hover { color: inherit; }
 </style>
