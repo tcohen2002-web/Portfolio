@@ -96,7 +96,15 @@ const links = [
     let isMobile = false;
     let startTopPx = 0;
     let endTopPx = 20;
-    let ticking = false;
+    let talRatio = 1.5;
+    let animP = 0;
+    let animRafId: number | null = null;
+    let animStart = 0;
+    let animFrom = 0;
+    let animTo = 0;
+    let animDuration = 650;
+    type HeroState = 'big' | 'shrinking' | 'small' | 'expanding';
+    let state: HeroState = 'big';
     const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
     const smooth = (t: number) => t * t * (3 - 2 * t);
 
@@ -109,18 +117,23 @@ const links = [
       targetPx = isMobile ? 15 : 28;
       startTopPx = isMobile ? vh * 0.10 : 20;
       endTopPx = isMobile ? 22 : 20;
+      const prevTransform = cohenEl.style.transform;
+      cohenEl.style.transform = 'none';
+      root.style.setProperty('--hero-font-size', `${startPx}px`);
+      const w = talEl.getBoundingClientRect().width;
+      if (w > 0) talRatio = w / startPx;
+      cohenEl.style.transform = prevTransform;
     };
 
     const update = () => {
-      const vh = window.innerHeight;
-      const range = vh * 0.45;
-      const p = clamp(window.scrollY / range, 0, 1);
+      const p = clamp(animP, 0, 1);
 
-      const shrinkP = smooth(clamp(p / 0.7, 0, 1));
+      const shrinkP = smooth(clamp(p / 0.55, 0, 1));
       const size = startPx + shrinkP * (targetPx - startPx);
       root.style.setProperty('--hero-font-size', `${size}px`);
 
-      const top = startTopPx + shrinkP * (endTopPx - startTopPx);
+      const riseP = smooth(clamp(p / 0.4, 0, 1));
+      const top = startTopPx + riseP * (endTopPx - startTopPx);
       root.style.setProperty('--hero-top', `${top}px`);
 
       if (shrinkP > 0.5) {
@@ -129,8 +142,8 @@ const links = [
         heroStack.removeAttribute('data-shrunk');
       }
 
-      const morphP = smooth(clamp((p - 0.55) / 0.45, 0, 1));
-      const talWidth = talEl.getBoundingClientRect().width;
+      const morphP = smooth(clamp((p - 0.4) / 0.6, 0, 1));
+      const talWidth = size * talRatio;
       const gap = size * 0.22;
       const liftRatio = isMobile ? 0.8 : 0.86;
       const tx = Math.round(morphP * (talWidth + gap));
@@ -141,19 +154,43 @@ const links = [
     const controller = new AbortController();
     const { signal } = controller;
 
-    document.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            update();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      },
-      { passive: true, signal }
-    );
+    const tickAnim = (now: number) => {
+      if (animStart === 0) animStart = now;
+      const t = clamp((now - animStart) / animDuration, 0, 1);
+      const eased = smooth(t);
+      animP = animFrom + (animTo - animFrom) * eased;
+      update();
+      if (t < 1) {
+        animRafId = requestAnimationFrame(tickAnim);
+      } else {
+        animP = animTo;
+        update();
+        animRafId = null;
+        state = animTo === 1 ? 'small' : 'big';
+      }
+    };
+
+    const startAnim = (to: 0 | 1, duration: number) => {
+      animFrom = animP;
+      animTo = to;
+      animDuration = duration;
+      animStart = 0;
+      if (animRafId !== null) cancelAnimationFrame(animRafId);
+      animRafId = requestAnimationFrame(tickAnim);
+    };
+
+    const readScroll = () => {
+      const y = window.scrollY;
+      if (state === 'big' && y > 0) {
+        state = 'shrinking';
+        startAnim(1, 700);
+      } else if (state === 'small' && y < 40) {
+        state = 'expanding';
+        startAnim(0, 600);
+      }
+    };
+
+    document.addEventListener('scroll', readScroll, { passive: true, signal });
     window.addEventListener(
       'resize',
       () => {
@@ -181,6 +218,13 @@ const links = [
     });
 
     measure();
+    if (window.scrollY > 2) {
+      animP = 1;
+      state = 'small';
+    } else {
+      animP = 0;
+      state = 'big';
+    }
     update();
   }
 
