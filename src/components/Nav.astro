@@ -26,7 +26,7 @@ const links = [
         <span
           data-hero-stack
           class="relative inline-block font-sans font-medium uppercase leading-[0.85] tracking-[-0.04em]"
-          style="font-size: var(--hero-font-size, 22vw); transform-origin: 0 0; will-change: transform;"
+          style="font-size: var(--hero-font-size, 22vw); transform-origin: 0 0; will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
         >
           <span data-tal class="inline-block">
             <span class="letter" style="--c:#8478C4">T</span><span class="letter" style="--c:#7A9670">a</span><span class="letter" style="--c:#C4A82E">l</span>
@@ -149,7 +149,7 @@ const links = [
       const liftRatio = isMobile ? 0.85 : 0.86;
       const tx = Math.round(morphP * startPx * (talRatio + 0.22));
       const ty = Math.round(-morphP * startPx * liftRatio);
-      cohenEl.style.transform = `translate(${tx}px, ${ty}px)`;
+      cohenEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
     };
 
     const controller = new AbortController();
