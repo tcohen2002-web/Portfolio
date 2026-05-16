@@ -64,7 +64,7 @@ const links = [
   html { scroll-behavior: smooth; }
   :root { --hero-top: 20px; --hero-font-size: 18vw; }
   @media (max-width: 767px) {
-    :root { --hero-top: 18vh; --hero-font-size: 22vw; }
+    :root { --hero-top: 10vh; --hero-font-size: 22vw; }
   }
 </style>
 
@@ -105,7 +105,7 @@ const links = [
       const sizeVw = isMobile ? 22 : 18;
       startPx = (sizeVw / 100) * vw;
       targetPx = isMobile ? 15 : 28;
-      startTopPx = isMobile ? vh * 0.18 : 20;
+      startTopPx = isMobile ? vh * 0.10 : 20;
       endTopPx = isMobile ? 22 : 20;
     };
 
