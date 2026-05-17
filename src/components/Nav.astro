@@ -117,15 +117,13 @@ const links = [
       targetPx = isMobile ? 15 : 28;
       startTopPx = isMobile ? vh * 0.10 : 20;
       endTopPx = isMobile ? 22 : 20;
-      const prevCohenT = cohenEl.style.transform;
-      const prevStackT = heroStack.style.transform;
       cohenEl.style.transform = 'none';
       heroStack.style.transform = 'none';
+      heroStack.style.removeProperty('--hero-font-size');
+      heroLink.style.removeProperty('--hero-top');
       root.style.setProperty('--hero-font-size', `${startPx}px`);
       const w = talEl.getBoundingClientRect().width;
       if (w > 0) talRatio = w / startPx;
-      cohenEl.style.transform = prevCohenT;
-      heroStack.style.transform = prevStackT;
     };
 
     const update = () => {
@@ -152,6 +150,22 @@ const links = [
       cohenEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
     };
 
+    const applyRestState = () => {
+      const liftRatio = isMobile ? 0.85 : 0.86;
+      heroLink.style.setProperty('--hero-top', `${endTopPx}px`);
+      heroStack.style.setProperty('--hero-font-size', `${targetPx}px`);
+      heroStack.style.transform = 'translate3d(0, 0, 0)';
+      heroStack.setAttribute('data-shrunk', '');
+      const tx = Math.round(targetPx * (talRatio + 0.22));
+      const ty = Math.round(-targetPx * liftRatio);
+      cohenEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    };
+
+    const clearRestState = () => {
+      heroLink.style.removeProperty('--hero-top');
+      heroStack.style.removeProperty('--hero-font-size');
+    };
+
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -165,13 +179,18 @@ const links = [
         animRafId = requestAnimationFrame(tickAnim);
       } else {
         animP = animTo;
-        update();
+        if (animTo === 1) applyRestState();
+        else update();
         animRafId = null;
         state = animTo === 1 ? 'small' : 'big';
       }
     };
 
     const startAnim = (to: 0 | 1, duration: number) => {
+      if (to === 0) {
+        clearRestState();
+        update();
+      }
       animFrom = animP;
       animTo = to;
       animDuration = duration;
@@ -198,7 +217,8 @@ const links = [
       'resize',
       () => {
         measure();
-        update();
+        if (state === 'small') applyRestState();
+        else update();
       },
       { passive: true, signal }
     );
@@ -224,17 +244,19 @@ const links = [
     if (window.scrollY > 2) {
       animP = 1;
       state = 'small';
+      applyRestState();
     } else {
       animP = 0;
       state = 'big';
+      update();
     }
-    update();
 
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         if (signal.aborted) return;
         measure();
-        update();
+        if (state === 'small') applyRestState();
+        else update();
       });
     }
   }
