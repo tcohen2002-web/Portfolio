@@ -144,21 +144,21 @@ const links = [
       }
 
       const morphP = smooth(clamp((p - 0.4) / 0.6, 0, 1));
-      const liftRatio = isMobile ? 0.71 : 0.86;
+      const liftRatio = isMobile ? 0.76 : 0.86;
       const tx = Math.round(morphP * startPx * (talRatio + 0.22));
-      const ty = Math.round(-morphP * startPx * liftRatio);
-      cohenEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      const ty = -(morphP * startPx * liftRatio);
+      cohenEl.style.transform = `translate3d(${tx}px, ${ty.toFixed(2)}px, 0)`;
     };
 
     const applyRestState = () => {
-      const liftRatio = isMobile ? 0.71 : 0.86;
+      const liftRatio = isMobile ? 0.76 : 0.86;
       heroLink.style.setProperty('--hero-top', `${endTopPx}px`);
       heroStack.style.setProperty('--hero-font-size', `${targetPx}px`);
       heroStack.style.transform = 'translate3d(0, 0, 0)';
       heroStack.setAttribute('data-shrunk', '');
       const tx = Math.round(targetPx * (talRatio + 0.22));
-      const ty = Math.round(-targetPx * liftRatio);
-      cohenEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      const ty = -(targetPx * liftRatio);
+      cohenEl.style.transform = `translate3d(${tx}px, ${ty.toFixed(2)}px, 0)`;
     };
 
     const clearRestState = () => {
