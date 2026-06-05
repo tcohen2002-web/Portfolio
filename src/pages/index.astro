@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import StickmanWave from '~/components/StickmanWave.astro';
+import { Image } from 'astro:assets';
+import ollieImg from '~/assets/images/ollie/phone-watch.png';
+import miraImg from '~/assets/images/mira/mockup-mira-people4.png';
+import miraMockImg from '~/assets/images/mira/mira-mock-portrait.png';
+import vamosImg from '~/assets/images/vamos-bites/final-render2.png';
 
 const projects = [
   {
@@ -9,23 +14,35 @@ const projects = [
     title: 'Ollie',
     year: '2024',
     tagline: 'A multimodal social network connecting Olympic athletes across cultures.',
-    hover: '#DCD7EC',
+    bg: '#DCD7EC',
+    image: ollieImg,
+    imageAlt: 'Ollie app on iPhone and Apple Watch',
+    imageClass: 'h-[160px] md:h-[410px]',
+    imagePos: 'top-[60%] left-1/2 md:top-[63%]',
   },
   {
     slug: 'mira',
     n: '02',
     title: 'Mira',
     year: '2025',
-    tagline: 'An interactive plant — a gentle emotional mirror for young adults and parents living apart.',
-    hover: '#D2DFC8',
+    tagline: 'An interactive plant: a gentle emotional mirror for young adults and parents living apart.',
+    bg: '#D2DFC8',
+    image: miraImg,
+    mobileImage: miraMockImg,
+    imageAlt: 'Mira app mockup with people',
+    imageClass: 'h-[160px] md:h-[360px]',
   },
   {
     slug: 'vamos-bites',
     n: '03',
     title: 'Vamos Bites',
     year: '2025',
-    tagline: "A compact tribute to Rafael Nadal — chocolate, ritual, and Spanish identity in a clay-court timber box.",
-    hover: '#EAC9B0',
+    tagline: "A compact tribute to Rafael Nadal: chocolate, ritual, and Spanish identity in a clay-court timber box.",
+    bg: '#EAC9B0',
+    image: vamosImg,
+    imageAlt: 'Vamos Bites chocolate box',
+    imageClass: 'h-[200px] w-auto md:h-[430px]',
+    imagePos: 'top-1/2 left-[40%] md:left-1/2',
   },
   {
     slug: 'mates-and-matches',
@@ -33,7 +50,7 @@ const projects = [
     title: 'Mates & Matches',
     year: '2026',
     tagline: 'An inclusive platform helping international students in Sydney find beginner-friendly social sports.',
-    hover: '#EFE7BD',
+    bg: null,
     comingSoon: true,
   },
 ];
@@ -311,7 +328,7 @@ const projects = [
     </div>
 
     <p class="max-w-[62ch] font-display text-2xl italic leading-snug text-ink md:text-3xl md:leading-[1.2]">
-      Hi, I'm Tal — UX/UI designer, sticky-note hoarder, and big fan of products that don't need a manual. Let's build something your users will thank you for.
+      Hi, I'm Tal, a UX/UI designer, sticky-note hoarder, and big fan of products that don't need a manual. Let's build something your users will thank you for.
     </p>
 
     <div class="mt-12 grid grid-cols-2 items-start gap-6 md:mt-8 md:grid-cols-12">
@@ -356,46 +373,71 @@ const projects = [
     <ul class="border-t border-ink/15">
       {projects.map((p) => {
         const inner = (
-          <div class="mx-auto grid max-w-[1600px] grid-cols-12 items-baseline gap-4 px-6 py-6 md:px-14 md:py-8">
-            <span class="col-span-2 font-mono text-[12px] uppercase tracking-[0.18em] text-mute md:col-span-1">
-              {p.n}
-            </span>
-            <span class:list={[
-              'relative col-span-10 font-sans text-4xl font-medium leading-none tracking-[-0.03em] md:col-span-6 md:text-6xl',
-              p.comingSoon && 'text-ink/40',
-            ]}>
-              {p.title}
-              {p.comingSoon && (
-                <span class="absolute right-0 bottom-[calc(100%-1rem)] inline-block rounded-full border border-ink/30 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] leading-none text-ink/60 md:text-[11px]">
-                  Coming soon
-                </span>
-              )}
-            </span>
-            <span class:list={[
-              'col-span-12 text-sm md:col-span-4 md:text-base',
-              p.comingSoon ? 'text-ink/40' : 'text-mute',
-            ]}>
-              {p.tagline}
-            </span>
-            <span class="hidden font-mono text-[12px] uppercase tracking-[0.18em] text-mute md:col-span-1 md:block md:text-right">
-              {p.year}
-            </span>
+          <div class="mx-auto flex min-h-[160px] max-w-[1600px] items-stretch md:min-h-0">
+            {/* Left: content */}
+            <div class="flex flex-1 flex-col justify-between px-4 py-5 md:min-h-[340px] md:px-14 md:py-12">
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-mute md:text-[11px]">{p.n}</span>
+                <div class:list={[
+                  'relative mt-2 font-sans text-[1.75rem] font-medium leading-none tracking-[-0.03em] md:mt-3 md:text-[5.5rem]',
+                  p.comingSoon ? 'text-ink/40' : 'text-ink',
+                ]}>
+                  {p.title}
+                  {p.comingSoon && (
+                    <span class="ml-2 inline-block translate-y-[-0.4em] rounded-full border border-ink/30 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.15em] leading-none text-ink/60 md:ml-3 md:translate-y-[-0.5em] md:px-2.5 md:py-1 md:text-[11px]">
+                      Coming soon
+                    </span>
+                  )}
+                </div>
+                <p class:list={[
+                  'mt-2 max-w-[46ch] text-xs leading-snug md:mt-4 md:text-lg',
+                  p.comingSoon ? 'text-ink/40' : 'text-mute',
+                ]}>
+                  {p.tagline}
+                </p>
+              </div>
+              <span class="mt-4 hidden font-mono text-[11px] uppercase tracking-[0.18em] text-mute md:mt-6 md:block">{p.year}</span>
+            </div>
+            {/* Right: image */}
+            {p.image ? (
+              <div class="relative w-[42%] md:w-[55%]">
+                {'mobileImage' in p && p.mobileImage && (
+                  <Image
+                    src={p.mobileImage}
+                    alt={p.imageAlt!}
+                    height={300}
+                    width={Math.round(300 * p.mobileImage.width / p.mobileImage.height)}
+                    class="pointer-events-none absolute left-1/2 top-1/2 h-[160px] w-auto -translate-x-1/2 -translate-y-1/2 select-none object-contain md:hidden"
+                  />
+                )}
+                <Image
+                  src={p.image}
+                  alt={p.imageAlt!}
+                  height={600}
+                  width={Math.round(600 * p.image.width / p.image.height)}
+                  class:list={[
+                    "pointer-events-none absolute w-auto -translate-x-1/2 -translate-y-1/2 select-none object-contain",
+                    'mobileImage' in p && p.mobileImage ? 'hidden md:block' : '',
+                    p.imageClass ?? 'h-[160px] md:h-[430px]',
+                    p.imagePos ?? 'top-1/2 left-1/2',
+                  ]}
+                />
+              </div>
+            ) : null}
+            <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-20 ring-[6px] ring-inset ring-transparent transition-all duration-200 md:group-hover:ring-ink/50" />
           </div>
         );
         return (
-          <li class="group border-b border-ink/15">
+          <li class="relative z-10 overflow-hidden border-b border-ink/15">
             {p.comingSoon ? (
-              <div
-                aria-disabled="true"
-                class="block cursor-not-allowed select-none"
-              >
+              <div aria-disabled="true" class="cursor-not-allowed select-none">
                 {inner}
               </div>
             ) : (
               <a
                 href={`/work/${p.slug}`}
-                style={`--hover: ${p.hover}`}
-                class="block transition-colors duration-500 hover:bg-[var(--hover)]"
+                style={p.bg ? `background-color: ${p.bg}` : ''}
+                class="group relative block"
               >
                 {inner}
               </a>
@@ -423,10 +465,10 @@ const projects = [
         </p>
         <div class="mt-10 space-y-5 text-base leading-relaxed text-ink/80 md:mt-12 md:text-lg">
           <p>
-            I'm a UX/UI designer with a global perspective, shaped by years across three continents and a competitive tennis career. The court taught me to read patterns under pressure — I now apply the same instincts to designing intuitive, human-centred digital experiences grounded in research and empathy.
+            I'm a UX/UI designer with a global perspective, shaped by years across three continents and a competitive tennis career. The court taught me to read patterns under pressure; I now apply the same instincts to designing intuitive, human-centred digital experiences grounded in research and empathy.
           </p>
           <p>
-            I work best in small, close teams. Coaching tennis sharpened how I collaborate — listen first, set a shared rhythm, then iterate. I lean on clear communication, careful research, and front-end coding skills that close the gap between idea and interface.
+            I work best in small, close teams. Coaching tennis sharpened how I collaborate: listen first, set a shared rhythm, then iterate. I lean on clear communication, careful research, and front-end coding skills that close the gap between idea and interface.
           </p>
           <p>
             What drives me is building products that feel effortless: inclusive by default, calm at the surface, considered underneath. Technology should connect people across cultures, not get in the way.

@@ -14,13 +14,13 @@ interface Props {
 
 const {
   title,
-  description = 'Tal Cohen — UX/UI designer working across Spain, the USA, and Australia.',
+  description = 'Tal Cohen, UX/UI designer working across Spain, the USA, and Australia.',
   ogImage = '/og/default.png',
   bg = 'paper',
   hideFooter = false,
 } = Astro.props;
 
-const fullTitle = title === 'Tal Cohen' ? title : `${title} — Tal Cohen`;
+const fullTitle = title === 'Tal Cohen' ? title : `${title} | Tal Cohen`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://talcohen.example').toString();
 ---
 
