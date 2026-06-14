@@ -29,10 +29,10 @@ const links = [
           style="font-size: var(--hero-font-size, 22vw); transform-origin: 0 0; will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translateZ(0);"
         >
           <span data-tal class="inline-block">
-            <span class="letter" style="--c:#8478C4">T</span><span class="letter" style="--c:#7A9670">a</span><span class="letter" style="--c:#C4A82E">l</span>
+            <span class="letter" style="--c:#AFA3CE">T</span><span class="letter" style="--c:#B1C9AE">a</span><span class="letter" style="--c:#DA724F">l</span>
           </span>
           <span data-cohen class="block" style="will-change: transform;">
-            <span class="letter" style="--c:#C9633F">C</span><span class="letter" style="--c:#8478C4">o</span><span class="letter" style="--c:#7A9670">h</span><span class="letter" style="--c:#C4A82E">e</span><span class="letter" style="--c:#C9633F">n</span>
+            <span class="letter" style="--c:#6BA8C4">C</span><span class="letter" style="--c:#AFA3CE">o</span><span class="letter" style="--c:#B1C9AE">h</span><span class="letter" style="--c:#DA724F">e</span><span class="letter" style="--c:#6BA8C4">n</span>
           </span>
         </span>
       </a>
@@ -70,11 +70,13 @@ const links = [
 
 <style>
   .letter { transition: color 280ms ease; }
+  .letter.lit { color: var(--c); }
   @media (hover: hover) and (min-width: 768px) {
     .letter:hover { color: var(--c); }
   }
   [data-hero-stack][data-shrunk] .letter { pointer-events: none; }
-  [data-hero-stack][data-shrunk] .letter:hover { color: inherit; }
+  [data-hero-stack][data-shrunk] .letter:hover,
+  [data-hero-stack][data-shrunk] .letter.lit { color: inherit; }
 </style>
 
 <script>
@@ -227,6 +229,16 @@ const links = [
       () => controller.abort(),
       { once: true }
     );
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll<HTMLElement>('.letter').forEach((letter) => {
+        letter.addEventListener(
+          'mouseenter',
+          () => letter.classList.add('lit'),
+          { once: true, signal }
+        );
+      });
+    }
 
     const homeLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href="/"]');
     homeLinks.forEach((link) => {
