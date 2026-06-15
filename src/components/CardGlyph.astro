@@ -126,10 +126,10 @@ const { slug } = Astro.props;
   /* Post-latch hover (desktop only): text flips to ink */
   @media (hover: hover) {
     .group:hover [data-mira-glyph] { color: #4A6E47; }
-    .group.is-latched-rested:hover [data-latch-text] { color: var(--ink, #0B0B0E); }
-    .group.is-latched-rested:hover [data-glyph] { color: var(--ink, #0B0B0E); }
-    .group.is-latched-rested:hover [data-mira-glyph] { color: #2D4A2A; }
-    .group.is-latched-rested:hover [data-white-petal] { fill: #1B3A1A; }
+    .group.is-latched:hover [data-latch-text] { color: var(--ink, #0B0B0E); }
+    .group.is-latched:hover [data-glyph] { color: var(--ink, #0B0B0E); }
+    .group.is-latched:hover [data-mira-glyph] { color: #2D4A2A; }
+    .group.is-latched:hover [data-white-petal] { fill: #1B3A1A; }
   }
 
   .glyph .draw {
@@ -475,13 +475,6 @@ const { slug } = Astro.props;
         }, { threshold: 0.5 });
         io.observe(target);
 
-        if (card) {
-          card.addEventListener('mouseleave', () => {
-            if (card.classList.contains('is-latched') && !card.classList.contains('is-latched-rested')) {
-              card.classList.add('is-latched-rested');
-            }
-          });
-        }
       });
       return;
     }
