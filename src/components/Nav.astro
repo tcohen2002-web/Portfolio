@@ -145,7 +145,7 @@ const links = [
         heroStack.removeAttribute('data-shrunk');
       }
 
-      const morphP = smooth(clamp((p - 0.4) / 0.6, 0, 1));
+      const morphP = smooth(clamp((p - 0.1) / 0.55, 0, 1));
       const liftRatio = isMobile ? 0.793 : 0.86;
       const tx = Math.round(morphP * startPx * (talRatio + 0.22));
       const ty = -(morphP * startPx * liftRatio);
@@ -231,11 +231,22 @@ const links = [
     );
 
     if (window.matchMedia('(hover: hover)').matches) {
-      document.querySelectorAll<HTMLElement>('.letter').forEach((letter) => {
+      const letters = document.querySelectorAll<HTMLElement>('.letter');
+      let litCount = 0;
+      const total = letters.length;
+      letters.forEach((letter) => {
         letter.addEventListener(
           'mouseenter',
-          () => letter.classList.add('lit'),
-          { once: true, signal }
+          () => {
+            if (!letter.classList.contains('lit')) {
+              letter.classList.add('lit');
+              litCount++;
+              if (litCount === total) {
+                document.dispatchEvent(new CustomEvent('tal-cohen-lit'));
+              }
+            }
+          },
+          { signal }
         );
       });
     }

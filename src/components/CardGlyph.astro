@@ -99,6 +99,7 @@ const { slug } = Astro.props;
     fill="none"
     stroke-linecap="round"
     stroke-linejoin="round"
+    data-glyph
     data-mira-glyph
     class="glyph absolute inset-0 h-full w-full"
   >
@@ -417,20 +418,70 @@ const { slug } = Astro.props;
     const canHover = window.matchMedia('(hover: hover)').matches;
 
     if (canHover) {
-      glyphs.forEach((g) => {
+      const glyphArray = Array.from(glyphs);
+      const queued = new Set<SVGElement>();
+      const queue: SVGElement[] = [];
+      let animating = false;
+
+      function getAnimDuration(g: SVGElement): number {
+        let max = 0;
+        g.querySelectorAll<SVGElement>('.draw, .pop').forEach((el) => {
+          const d = parseFloat(el.style.transitionDelay) || 0;
+          if (d > max) max = d;
+        });
+        return max + 400;
+      }
+
+      function drainQueue() {
+        if (animating || queue.length === 0) return;
+        const g = queue.shift()!;
+        animating = true;
         choreograph(g);
-        const card = g.closest('a') as HTMLElement | null;
-        if (!card) return;
-        card.addEventListener('mouseenter', () => {
-          if (g.classList.contains('is-live')) return;
+        // Double rAF lets the browser paint the initial hidden state before transitions fire
+        requestAnimationFrame(() => requestAnimationFrame(() => {
           g.classList.add('is-live');
-          card.classList.add('is-latched');
-        });
-        card.addEventListener('mouseleave', () => {
-          if (card.classList.contains('is-latched') && !card.classList.contains('is-latched-rested')) {
-            card.classList.add('is-latched-rested');
-          }
-        });
+          const card = g.closest('a') as HTMLElement | null;
+          if (card) card.classList.add('is-latched');
+          const dur = getAnimDuration(g);
+          setTimeout(() => {
+            animating = false;
+            drainQueue();
+          }, dur);
+        }));
+      }
+
+      function enqueue(g: SVGElement) {
+        if (queued.has(g)) return;
+        queued.add(g);
+        const idx = glyphArray.indexOf(g);
+        let insertAt = queue.length;
+        for (let i = 0; i < queue.length; i++) {
+          if (glyphArray.indexOf(queue[i]) > idx) { insertAt = i; break; }
+        }
+        queue.splice(insertAt, 0, g);
+        drainQueue();
+      }
+
+      glyphs.forEach((g) => {
+        const card = g.closest('a') as HTMLElement | null;
+        const target = card ?? g;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              io.disconnect();
+              enqueue(g);
+            }
+          });
+        }, { threshold: 0.5 });
+        io.observe(target);
+
+        if (card) {
+          card.addEventListener('mouseleave', () => {
+            if (card.classList.contains('is-latched') && !card.classList.contains('is-latched-rested')) {
+              card.classList.add('is-latched-rested');
+            }
+          });
+        }
       });
       return;
     }
