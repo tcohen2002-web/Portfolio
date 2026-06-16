@@ -131,10 +131,10 @@ const links = [
     const update = () => {
       const p = clamp(animP, 0, 1);
 
-      const shrinkP = smooth(clamp(p / 0.55, 0, 1));
+      const shrinkP = smooth(clamp(p / 0.80, 0, 1));
       const scaleNow = 1 + shrinkP * (targetPx / startPx - 1);
 
-      const riseP = smooth(clamp(p / 0.4, 0, 1));
+      const riseP = smooth(clamp(p / 0.58, 0, 1));
       const dy = riseP * (endTopPx - startTopPx);
 
       heroStack.style.transform = `translate3d(0, ${dy.toFixed(2)}px, 0) scale(${scaleNow.toFixed(4)})`;
@@ -145,7 +145,7 @@ const links = [
         heroStack.removeAttribute('data-shrunk');
       }
 
-      const morphP = smooth(clamp((p - 0.1) / 0.55, 0, 1));
+      const morphP = smooth(clamp((p - 0.15) / 0.80, 0, 1));
       const liftRatio = isMobile ? 0.793 : 0.86;
       const tx = Math.round(morphP * startPx * (talRatio + 0.22));
       const ty = -(morphP * startPx * liftRatio);
@@ -174,7 +174,7 @@ const links = [
     const tickAnim = (now: number) => {
       if (animStart === 0) animStart = now;
       const t = clamp((now - animStart) / animDuration, 0, 1);
-      const eased = smooth(t);
+      const eased = 1 - Math.pow(1 - t, 3);
       animP = animFrom + (animTo - animFrom) * eased;
       update();
       if (t < 1) {
@@ -207,10 +207,10 @@ const links = [
       const expandAt = isMobile ? 5 : 20;
       if (state === 'big' && y > shrinkAt) {
         state = 'shrinking';
-        startAnim(1, 700);
+        startAnim(1, 1050);
       } else if (state === 'small' && y < expandAt) {
         state = 'expanding';
-        startAnim(0, 600);
+        startAnim(0, 950);
       }
     };
 
